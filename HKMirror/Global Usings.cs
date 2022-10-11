@@ -1,0 +1,16 @@
+﻿global using Modding;
+global using System.Collections;
+global using System.Collections.Generic;
+global using System.Reflection;
+global using UnityEngine;
+global using GlobalEnums;
+global using System;
+global using MonoMod.Cil;
+global using MonoMod.Utils;
+global using HutongGames.PlayMaker;
+global using UnityEngine.SceneManagement;
+global using HutongGames.PlayMaker.Actions;
+global using ReflectionHelper = Modding.ReflectionHelper;
+global using InControl;
+global using Modding.Converters;
+global using Newtonsoft.Json;
