@@ -54,7 +54,7 @@ public static class BossSequenceControllerR
         set => ReflectionHelper.SetProperty(typeof(BossSequenceController), "WasCompleted", value);
     }
 
-    public static bool IsInSequence => BossSequenceController.IsInSequence != null;
+    public static bool IsInSequence => BossSequenceController.IsInSequence;
 
     public static bool IsLastBossScene => BossSequenceController.IsLastBossScene;
     public static int BossIndex => BossSequenceController.BossIndex;

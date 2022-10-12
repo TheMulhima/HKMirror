@@ -77,7 +77,7 @@ public class INIParserR : InstanceClassWrapper<INIParser>
         orig.OpenFromString(str);
     }
 
-    public string ToString()
+    public override string ToString()
     {
         return orig.ToString();
     }

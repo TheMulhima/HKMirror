@@ -71,7 +71,7 @@ public class CodeWriterR : InstanceClassWrapper<CodeWriter>
         orig.AppendLineFormat(format, args);
     }
 
-    public string ToString()
+    public override string ToString()
     {
         return orig.ToString();
     }

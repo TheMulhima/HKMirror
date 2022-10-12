@@ -51,12 +51,12 @@ public class KeyBindingSourceR : InstanceClassWrapper<KeyBindingSource>
         return orig.Equals(other);
     }
 
-    public bool Equals(object other)
+    public override bool Equals(object other)
     {
         return orig.Equals(other);
     }
 
-    public int GetHashCode()
+    public override int GetHashCode()
     {
         return orig.GetHashCode();
     }
