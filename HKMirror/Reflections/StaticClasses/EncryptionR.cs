@@ -1,4 +1,5 @@
 ﻿namespace HKMirror.StaticClasses;
+
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of Encryption allowing you to
 ///     easily get/set fields and call methods without dealing with reflection.
@@ -7,11 +8,23 @@ public static class EncryptionR
 {
     public static byte[] KeyArray => ReflectionHelper.GetField<byte[]>(typeof(Encryption), "KeyArray");
 
-    public static byte[] Encrypt(byte[] decryptedBytes) => Encryption.Encrypt(decryptedBytes);
+    public static byte[] Encrypt(byte[] decryptedBytes)
+    {
+        return Encryption.Encrypt(decryptedBytes);
+    }
 
-    public static byte[] Decrypt(byte[] encryptedBytes) => Encryption.Decrypt(encryptedBytes);
+    public static byte[] Decrypt(byte[] encryptedBytes)
+    {
+        return Encryption.Decrypt(encryptedBytes);
+    }
 
-    public static string Encrypt(string unencryptedString) => Encryption.Encrypt(unencryptedString);
+    public static string Encrypt(string unencryptedString)
+    {
+        return Encryption.Encrypt(unencryptedString);
+    }
 
-    public static string Decrypt(string encryptedString) => Encryption.Decrypt(encryptedString);
+    public static string Decrypt(string encryptedString)
+    {
+        return Encryption.Decrypt(encryptedString);
+    }
 }

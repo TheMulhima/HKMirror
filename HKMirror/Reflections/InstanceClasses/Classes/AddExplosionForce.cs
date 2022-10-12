@@ -58,7 +58,7 @@ public class AddExplosionForceR : InstanceClassWrapper<AddExplosionForce>
 
     public Renderer renderer => GetProperty<Renderer>();
 
-    public UnityEngine.Animation animation => GetProperty<UnityEngine.Animation>();
+    public Animation animation => GetProperty<Animation>();
 
     public AudioSource audio => GetProperty<AudioSource>();
 

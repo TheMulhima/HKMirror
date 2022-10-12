@@ -72,7 +72,7 @@ public static class SceneDataR
 
     public static void SetupNewSceneData()
     {
-        ReflectionHelper.CallMethod(SceneData.instance,"SetupNewSceneData");
+        ReflectionHelper.CallMethod(SceneData.instance, "SetupNewSceneData");
     }
 
     public static int FindGeoRockInList(GeoRockData grd)

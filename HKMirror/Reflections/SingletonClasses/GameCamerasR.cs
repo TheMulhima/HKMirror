@@ -6,7 +6,7 @@ namespace HKMirror;
 ///     A class that contains all (public and private) fields and methods of GameCameras allowing you to
 ///     easily get/set fields and call methods without dealing with reflection.
 /// </summary>
-public static class GameCamerasR 
+public static class GameCamerasR
 {
     public static Camera hudCamera
     {
@@ -137,7 +137,7 @@ public static class GameCamerasR
     public static SceneParticlesController sceneParticles
     {
         get => GameCameras.instance.sceneParticles;
-        set => ReflectionHelper.SetProperty(GameCameras.instance,"sceneParticles", value);
+        set => ReflectionHelper.SetProperty(GameCameras.instance, "sceneParticles", value);
     }
 
     public static GameCameras instance => GameCameras.instance;

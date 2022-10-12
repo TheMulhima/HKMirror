@@ -1,6 +1,5 @@
 using System.Collections.ObjectModel;
 
-
 namespace HKMirror.InstanceClasses;
 
 /// <summary>

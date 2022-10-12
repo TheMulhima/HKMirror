@@ -22,7 +22,7 @@ public class WakeUp2dR : InstanceClassWrapper<WakeUp2d>
 
     public Renderer renderer => GetProperty<Renderer>();
 
-    public UnityEngine.Animation animation => GetProperty<UnityEngine.Animation>();
+    public Animation animation => GetProperty<Animation>();
 
     public AudioSource audio => GetProperty<AudioSource>();
 

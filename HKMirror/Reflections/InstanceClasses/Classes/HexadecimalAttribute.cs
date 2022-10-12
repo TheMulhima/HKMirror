@@ -1,5 +1,3 @@
-
-
 namespace HKMirror.InstanceClasses;
 
 /// <summary>

@@ -34,7 +34,7 @@ public class GetSpeed2dR : InstanceClassWrapper<GetSpeed2d>
 
     public Renderer renderer => GetProperty<Renderer>();
 
-    public UnityEngine.Animation animation => GetProperty<UnityEngine.Animation>();
+    public Animation animation => GetProperty<Animation>();
 
     public AudioSource audio => GetProperty<AudioSource>();
 

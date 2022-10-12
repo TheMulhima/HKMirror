@@ -1,4 +1,3 @@
-
 using InControl.UnityDeviceProfiles;
 
 namespace HKMirror.InstanceClasses;

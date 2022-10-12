@@ -1,4 +1,3 @@
-
 using InControl.NativeDeviceProfiles;
 
 namespace HKMirror.InstanceClasses;

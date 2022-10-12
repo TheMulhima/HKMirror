@@ -1,6 +1,5 @@
 using System.IO;
 
-
 namespace HKMirror.InstanceClasses;
 
 /// <summary>

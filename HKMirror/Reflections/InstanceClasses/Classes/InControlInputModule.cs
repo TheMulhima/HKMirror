@@ -1,4 +1,3 @@
-
 using UnityEngine.EventSystems;
 
 namespace HKMirror.InstanceClasses;

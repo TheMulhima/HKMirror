@@ -28,7 +28,7 @@ public class SetIsKinematic2dR : InstanceClassWrapper<SetIsKinematic2d>
 
     public Renderer renderer => GetProperty<Renderer>();
 
-    public UnityEngine.Animation animation => GetProperty<UnityEngine.Animation>();
+    public Animation animation => GetProperty<Animation>();
 
     public AudioSource audio => GetProperty<AudioSource>();
 

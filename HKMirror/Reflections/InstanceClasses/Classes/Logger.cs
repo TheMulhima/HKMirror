@@ -1,4 +1,3 @@
-
 using Logger = InControl.Logger;
 
 namespace HKMirror.InstanceClasses;

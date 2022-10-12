@@ -1,6 +1,4 @@
-﻿
-
-namespace HKMirror;
+﻿namespace HKMirror;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of InputHandler allowing you to
@@ -16,7 +14,7 @@ public static class InputHandlerR
 
     public static bool verboseMode
     {
-        get => ReflectionHelper.GetField<InputHandler,bool>(InputHandler.Instance, "verboseMode");
+        get => ReflectionHelper.GetField<InputHandler, bool>(InputHandler.Instance, "verboseMode");
         set => ReflectionHelper.SetField(InputHandler.Instance, "verboseMode", value);
     }
 
@@ -100,7 +98,8 @@ public static class InputHandlerR
 
     public static List<PlayerAction> nonMappableControllerActions
     {
-        get => ReflectionHelper.GetField<InputHandler, List<PlayerAction>>(InputHandler.Instance, "nonMappableControllerActions");
+        get => ReflectionHelper.GetField<InputHandler, List<PlayerAction>>(InputHandler.Instance,
+            "nonMappableControllerActions");
         set => ReflectionHelper.SetField(InputHandler.Instance, "nonMappableControllerActions", value);
     }
 
@@ -130,67 +129,68 @@ public static class InputHandlerR
 
     public static bool readyToSkipCutscene
     {
-        get => ReflectionHelper.GetField<InputHandler,bool>(InputHandler.Instance, "readyToSkipCutscene");
+        get => ReflectionHelper.GetField<InputHandler, bool>(InputHandler.Instance, "readyToSkipCutscene");
         set => ReflectionHelper.SetField(InputHandler.Instance, "readyToSkipCutscene", value);
     }
 
     public static bool controllerDetected
     {
-        get => ReflectionHelper.GetField<InputHandler,bool>(InputHandler.Instance, "controllerDetected");
+        get => ReflectionHelper.GetField<InputHandler, bool>(InputHandler.Instance, "controllerDetected");
         set => ReflectionHelper.SetField(InputHandler.Instance, "controllerDetected", value);
     }
 
     public static ControllerProfile currentControllerProfile
     {
-        get => ReflectionHelper.GetField<InputHandler, ControllerProfile>(InputHandler.Instance, "currentControllerProfile");
+        get => ReflectionHelper.GetField<InputHandler, ControllerProfile>(InputHandler.Instance,
+            "currentControllerProfile");
         set => ReflectionHelper.SetField(InputHandler.Instance, "currentControllerProfile", value);
     }
 
     public static bool isGameplayScene
     {
-        get => ReflectionHelper.GetField<InputHandler,bool>(InputHandler.Instance, "isGameplayScene");
+        get => ReflectionHelper.GetField<InputHandler, bool>(InputHandler.Instance, "isGameplayScene");
         set => ReflectionHelper.SetField(InputHandler.Instance, "isGameplayScene", value);
     }
 
     public static bool isTitleScreenScene
     {
-        get => ReflectionHelper.GetField<InputHandler,bool>(InputHandler.Instance, "isTitleScreenScene");
+        get => ReflectionHelper.GetField<InputHandler, bool>(InputHandler.Instance, "isTitleScreenScene");
         set => ReflectionHelper.SetField(InputHandler.Instance, "isTitleScreenScene", value);
     }
 
     public static bool isMenuScene
     {
-        get => ReflectionHelper.GetField<InputHandler,bool>(InputHandler.Instance, "isMenuScene");
+        get => ReflectionHelper.GetField<InputHandler, bool>(InputHandler.Instance, "isMenuScene");
         set => ReflectionHelper.SetField(InputHandler.Instance, "isMenuScene", value);
     }
 
     public static bool isStagTravelScene
     {
-        get => ReflectionHelper.GetField<InputHandler,bool>(InputHandler.Instance, "isStagTravelScene");
+        get => ReflectionHelper.GetField<InputHandler, bool>(InputHandler.Instance, "isStagTravelScene");
         set => ReflectionHelper.SetField(InputHandler.Instance, "isStagTravelScene", value);
     }
 
     public static float stagLockoutDuration
     {
-        get => ReflectionHelper.GetField<InputHandler,float>(InputHandler.Instance, "stagLockoutDuration");
+        get => ReflectionHelper.GetField<InputHandler, float>(InputHandler.Instance, "stagLockoutDuration");
         set => ReflectionHelper.SetField(InputHandler.Instance, "stagLockoutDuration", value);
     }
 
     public static bool stagLockoutActive
     {
-        get => ReflectionHelper.GetField<InputHandler,bool>(InputHandler.Instance, "stagLockoutActive");
+        get => ReflectionHelper.GetField<InputHandler, bool>(InputHandler.Instance, "stagLockoutActive");
         set => ReflectionHelper.SetField(InputHandler.Instance, "stagLockoutActive", value);
     }
 
     public static float skipCooldownTime
     {
-        get => ReflectionHelper.GetField<InputHandler,float>(InputHandler.Instance, "skipCooldownTime");
+        get => ReflectionHelper.GetField<InputHandler, float>(InputHandler.Instance, "skipCooldownTime");
         set => ReflectionHelper.SetField(InputHandler.Instance, "skipCooldownTime", value);
     }
 
     public static bool controllerPressed
     {
-        get => ReflectionHelper.GetField<InputHandler,bool>(InputHandler.Instance, "controllerPressed");
+        get => ReflectionHelper.GetField<InputHandler, bool>(InputHandler.Instance, "controllerPressed");
         set => ReflectionHelper.SetField(InputHandler.Instance, "", value);
     }
 
@@ -435,7 +435,8 @@ public static class InputHandlerR
 
     public static IEnumerator SetupGamepadUIInputActions()
     {
-        return ReflectionHelper.CallMethod<InputHandler, IEnumerator>(InputHandler.Instance, "SetupGamepadUIInputActions");
+        return ReflectionHelper.CallMethod<InputHandler, IEnumerator>(InputHandler.Instance,
+            "SetupGamepadUIInputActions");
     }
 
     public static void RemoveGamepadUIInputActions()

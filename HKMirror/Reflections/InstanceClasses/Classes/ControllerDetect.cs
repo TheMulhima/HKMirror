@@ -1,4 +1,3 @@
-
 using UnityEngine.UI;
 
 namespace HKMirror.InstanceClasses;

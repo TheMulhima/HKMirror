@@ -1,4 +1,3 @@
-
 using Touch = InControl.Touch;
 
 namespace HKMirror.InstanceClasses;

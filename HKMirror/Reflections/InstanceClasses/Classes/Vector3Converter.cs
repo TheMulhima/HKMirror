@@ -1,6 +1,3 @@
-using Modding.Converters;
-using Newtonsoft.Json;
-
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
