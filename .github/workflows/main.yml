@@ -32,5 +32,5 @@ jobs:
       - name: Upload Mod
         uses: actions/upload-artifact@v2
         with:
-          path: ./HKMirror/
-          files: HKMirror.zip
+          name: HKMirror
+          path: ./HKMirror/bin/Release
