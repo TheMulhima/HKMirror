@@ -9204,5 +9204,14 @@
             get => PlayerData.instance.GetBool(nameof(PlayerData.ordealAchieved));
             set => PlayerData.instance.SetBool(nameof(PlayerData.ordealAchieved), value);
         }
+
+        public static void SetupNewPlayerData() =>
+            ReflectionHelper.CallMethod(PlayerData.instance, "SetupNewPlayerData");
+        
+        public static void TakeHealthInternal(int amount) =>
+            ReflectionHelper.CallMethod(PlayerData.instance, "TakeHealthInternal", amount);
+        
+        public static void HasMapForScene(string sceneName) =>
+            ReflectionHelper.CallMethod(PlayerData.instance, "HasMapForScene", sceneName);
     }
 }
