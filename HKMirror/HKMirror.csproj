@@ -31,7 +31,7 @@
             <HintPath>$(HollowKnightFolder)\MonoMod.RuntimeDetour.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="MonoMod.RuntimeDetour, Version=21.4.29.1, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="MonoMod.RuntimeDetour">
             <HintPath>$(HollowKnightFolder)\MonoMod.RuntimeDetour.dll</HintPath>
             <Private>false</Private>
         </Reference>
@@ -39,31 +39,11 @@
             <HintPath>$(HollowKnightFolder)\MonoMod.Utils.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="MonoMod.Utils, Version=21.4.29.1, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\MonoMod.Utils.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="mscorlib">
-            <HintPath>$(HollowKnightFolder)\mscorlib.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="netstandard">
-            <HintPath>$(HollowKnightFolder)\netstandard.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="PlayMaker">
             <HintPath>$(HollowKnightFolder)\PlayMaker.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="PlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\PlayMaker.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(HollowKnightFolder)\UnityEngine.dll</HintPath>
             <Private>false</Private>
         </Reference>
@@ -79,15 +59,7 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.AudioModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.AudioModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.CoreModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.CoreModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(HollowKnightFolder)\UnityEngine.CoreModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
@@ -95,15 +67,7 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.ImageConversionModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.ImageConversionModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.IMGUIModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.IMGUIModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(HollowKnightFolder)\UnityEngine.IMGUIModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
@@ -115,23 +79,11 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.JSONSerializeModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.JSONSerializeModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.JSONSerializeModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.ParticleSystemModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.ParticleSystemModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.ParticleSystemModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.Physics2DModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.Physics2DModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(HollowKnightFolder)\UnityEngine.Physics2DModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
@@ -155,10 +107,6 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.TextRenderingModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.TextRenderingModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.TilemapModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.TilemapModule.dll</HintPath>
             <Private>false</Private>
@@ -167,35 +115,23 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.UI.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UI.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.UIModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.UIModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UIModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="MMHOOK_Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="MMHOOK_Assembly-CSharp">
             <HintPath>$(HollowKnightFolder)\MMHOOK_Assembly-CSharp.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="Newtonsoft.Json">
             <HintPath>$(HollowKnightFolder)\Newtonsoft.Json.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.InputLegacyModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+        <Reference Include="netstandard">
             <HintPath>$(HollowKnightFolder)\netstandard.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <Reference Include="mscorlib">
             <HintPath>$(HollowKnightFolder)\mscorlib.dll</HintPath>
             <Private>false</Private>
         </Reference>
