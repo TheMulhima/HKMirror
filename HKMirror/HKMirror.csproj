@@ -31,10 +31,6 @@
             <HintPath>$(HollowKnightFolder)\MonoMod.RuntimeDetour.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="MonoMod.RuntimeDetour">
-            <HintPath>$(HollowKnightFolder)\MonoMod.RuntimeDetour.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="MonoMod.Utils">
             <HintPath>$(HollowKnightFolder)\MonoMod.Utils.dll</HintPath>
             <Private>false</Private>
