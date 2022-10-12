@@ -23,14 +23,6 @@
             <HintPath>$(HollowKnightFolder)\Assembly-CSharp.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="MMHOOK_Assembly-CSharp">
-            <HintPath>$(HollowKnightFolder)\MMHOOK_Assembly-CSharp.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="MMHOOK_PlayMaker">
-            <HintPath>$(HollowKnightFolder)\MMHOOK_PlayMaker.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="MMHOOK_PlayMaker, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(HollowKnightFolder)\MMHOOK_PlayMaker.dll</HintPath>
             <Private>false</Private>
@@ -75,28 +67,12 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.AccessibilityModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.AccessibilityModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.AIModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.AIModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.AndroidJNIModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.AndroidJNIModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.AnimationModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.AnimationModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.ARModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.ARModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.AssetBundleModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.AssetBundleModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.AudioModule">
@@ -107,52 +83,12 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.AudioModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.ClothModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.ClothModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.ClusterInputModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.ClusterInputModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.ClusterRendererModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.ClusterRendererModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.CoreModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.CoreModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(HollowKnightFolder)\UnityEngine.CoreModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.CrashReportingModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.CrashReportingModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.DirectorModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.DirectorModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.DSPGraphModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.DSPGraphModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.GameCenterModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.GameCenterModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.GIModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.GIModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.GridModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.GridModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.HotReloadModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.HotReloadModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.ImageConversionModule">
@@ -175,10 +111,6 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.InputLegacyModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.InputModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.InputModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.JSONSerializeModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.JSONSerializeModule.dll</HintPath>
             <Private>false</Private>
@@ -187,20 +119,12 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.JSONSerializeModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.LocalizationModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.LocalizationModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.ParticleSystemModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.ParticleSystemModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(HollowKnightFolder)\UnityEngine.ParticleSystemModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.PerformanceReportingModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.PerformanceReportingModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.Physics2DModule">
@@ -215,14 +139,6 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.PhysicsModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.ProfilerModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.ProfilerModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.ScreenCaptureModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.ScreenCaptureModule.dll</HintPath>
             <Private>false</Private>
@@ -231,36 +147,8 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.SharedInternalsModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.SpriteMaskModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.SpriteMaskModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.SpriteShapeModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.SpriteShapeModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.StreamingModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.StreamingModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.SubstanceModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.SubstanceModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.SubsystemsModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.SubsystemsModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.TerrainModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.TerrainModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.TerrainPhysicsModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.TerrainPhysicsModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.TextCoreModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.TextCoreModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.TextRenderingModule">
@@ -275,24 +163,12 @@
             <HintPath>$(HollowKnightFolder)\UnityEngine.TilemapModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.TLSModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.TLSModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.UI">
             <HintPath>$(HollowKnightFolder)\UnityEngine.UI.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(HollowKnightFolder)\UnityEngine.UI.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UIElementsModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UIElementsModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UIElementsNativeModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UIElementsNativeModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.UIModule">
@@ -323,84 +199,16 @@
             <HintPath>$(HollowKnightFolder)\mscorlib.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.UmbraModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UmbraModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UNETModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UNETModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityAnalyticsModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UnityAnalyticsModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityConnectModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UnityConnectModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityCurlModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UnityCurlModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityTestProtocolModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UnityTestProtocolModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UnityWebRequestModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="UnityEngine.UnityWebRequestWWWModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.VehiclesModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.VehiclesModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.VFXModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.VFXModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
         <Reference Include="UnityEngine.VideoModule">
             <HintPath>$(HollowKnightFolder)\UnityEngine.VideoModule.dll</HintPath>
             <Private>false</Private>
         </Reference>
-        <Reference Include="UnityEngine.VirtualTexturingModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.VirtualTexturingModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.VRModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.VRModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.WindModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.WindModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="UnityEngine.XRModule">
-            <HintPath>$(HollowKnightFolder)\UnityEngine.XRModule.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
         <Reference Include="XGamingRuntime">
             <HintPath>$(HollowKnightFolder)\XGamingRuntime.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-        <Reference Include="zlib.net">
-            <HintPath>$(HollowKnightFolder)\zlib.net.dll</HintPath>
             <Private>false</Private>
         </Reference>
     </ItemGroup>
