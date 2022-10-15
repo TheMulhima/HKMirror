@@ -22,41 +22,42 @@ using Logger = InControl.Logger;
 using Mask = ToJ.Mask;
 using Random = System.Random;
 using Touch = InControl.Touch;
+using HKMirror.InstanceClasses;
 
-namespace HKMirror.InstanceClasses;
+namespace HKMirror;
 
 public static class InstanceClassWrapperCreator
 {
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of PlayerData allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static PlayerDataR Reflect(this PlayerData instance)
+    public static InstanceClasses.PlayerDataR Reflect(this PlayerData instance)
     {
-        return new PlayerDataR(instance);
+        return new InstanceClasses.PlayerDataR(instance);
     }
 
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of GameManager allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static GameManagerR Reflect(this GameManager instance)
+    public static InstanceClasses.GameManagerR Reflect(this GameManager instance)
     {
-        return new GameManagerR(instance);
+        return new InstanceClasses.GameManagerR(instance);
     }
 
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of HeroControllerR allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static HeroControllerR Reflect(this HeroController instance)
+    public static InstanceClasses.HeroControllerR Reflect(this HeroController instance)
     {
-        return new HeroControllerR(instance);
+        return new InstanceClasses.HeroControllerR(instance);
     }
 
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of UIManagerR allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static UIManagerR Reflect(this UIManager instance)
+    public static InstanceClasses.UIManagerR Reflect(this UIManager instance)
     {
-        return new UIManagerR(instance);
+        return new InstanceClasses.UIManagerR(instance);
     }
 
     /// <summary>
@@ -5016,9 +5017,9 @@ public static class InstanceClassWrapperCreator
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of GameCameras allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static GameCamerasR Reflect(this GameCameras instance)
+    public static InstanceClasses.GameCamerasR Reflect(this GameCameras instance)
     {
-        return new GameCamerasR(instance);
+        return new InstanceClasses.GameCamerasR(instance);
     }
 
     /// <summary>
@@ -8538,9 +8539,9 @@ public static class InstanceClassWrapperCreator
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of InputHandler allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static InputHandlerR Reflect(this InputHandler instance)
+    public static InstanceClasses.InputHandlerR Reflect(this InputHandler instance)
     {
-        return new InputHandlerR(instance);
+        return new InstanceClasses.InputHandlerR(instance);
     }
 
     /// <summary>
@@ -13624,9 +13625,9 @@ public static class InstanceClassWrapperCreator
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of SceneData allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static SceneDataR Reflect(this SceneData instance)
+    public static InstanceClasses.SceneDataR Reflect(this SceneData instance)
     {
-        return new SceneDataR(instance);
+        return new InstanceClasses.SceneDataR(instance);
     }
 
     /// <summary>
