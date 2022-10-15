@@ -4,8 +4,7 @@ namespace HKMirror.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of NaconGC100XFControllerMacNativeProfile
-///     allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class NaconGC100XFControllerMacNativeProfileR : InstanceClassWrapper<NaconGC100XFControllerMacNativeProfile>
 {

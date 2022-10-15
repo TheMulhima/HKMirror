@@ -3,8 +3,7 @@ using InControl.UnityDeviceProfiles;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of PlayStation3MacUnityProfile allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of PlayStation3MacUnityProfile allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class PlayStation3MacUnityProfileR : InstanceClassWrapper<PlayStation3MacUnityProfile>
 {

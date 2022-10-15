@@ -2,8 +2,7 @@ namespace HKMirror.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of GetAnimatorCurrentTransitionInfoIsName
-///     allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class GetAnimatorCurrentTransitionInfoIsNameR : InstanceClassWrapper<GetAnimatorCurrentTransitionInfoIsName>
 {

@@ -3,8 +3,7 @@ using InControl.NativeDeviceProfiles;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of HyperkinX91MacNativeProfile allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of HyperkinX91MacNativeProfile allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class HyperkinX91MacNativeProfileR : InstanceClassWrapper<HyperkinX91MacNativeProfile>
 {

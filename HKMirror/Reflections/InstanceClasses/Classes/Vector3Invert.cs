@@ -1,8 +1,7 @@
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of Vector3Invert allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of Vector3Invert allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class Vector3InvertR : InstanceClassWrapper<Vector3Invert>
 {

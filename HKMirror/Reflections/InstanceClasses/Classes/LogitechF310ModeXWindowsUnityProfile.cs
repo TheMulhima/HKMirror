@@ -4,8 +4,7 @@ namespace HKMirror.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of LogitechF310ModeXWindowsUnityProfile allowing
-///     you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class LogitechF310ModeXWindowsUnityProfileR : InstanceClassWrapper<LogitechF310ModeXWindowsUnityProfile>
 {

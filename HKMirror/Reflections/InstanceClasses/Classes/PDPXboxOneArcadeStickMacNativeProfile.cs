@@ -4,8 +4,7 @@ namespace HKMirror.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of PDPXboxOneArcadeStickMacNativeProfile allowing
-///     you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class PDPXboxOneArcadeStickMacNativeProfileR : InstanceClassWrapper<PDPXboxOneArcadeStickMacNativeProfile>
 {

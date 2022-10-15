@@ -1,8 +1,7 @@
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of ScreenToWorldPoint allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of ScreenToWorldPoint allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class ScreenToWorldPointR : InstanceClassWrapper<ScreenToWorldPoint>
 {

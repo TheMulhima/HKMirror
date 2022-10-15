@@ -4,8 +4,7 @@ namespace HKMirror.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of NVidiaShield2016AndroidUnityProfile allowing
-///     you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class NVidiaShield2016AndroidUnityProfileR : InstanceClassWrapper<NVidiaShield2016AndroidUnityProfile>
 {

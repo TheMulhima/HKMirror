@@ -6,8 +6,7 @@ using Bounds = UnityEngine.Bounds;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of TMP_Text allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of TMP_Text allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class TMP_TextR : InstanceClassWrapper<TMP_Text>
 {

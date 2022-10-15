@@ -4,8 +4,7 @@ namespace HKMirror.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of PlayStation4WindowsFirefoxUnityProfile
-///     allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class PlayStation4WindowsFirefoxUnityProfileR : InstanceClassWrapper<PlayStation4WindowsFirefoxUnityProfile>
 {

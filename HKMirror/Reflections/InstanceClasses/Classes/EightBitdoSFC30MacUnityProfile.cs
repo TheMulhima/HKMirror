@@ -3,8 +3,7 @@ using InControl.UnityDeviceProfiles;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of EightBitdoSFC30MacUnityProfile allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of EightBitdoSFC30MacUnityProfile allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class EightBitdoSFC30MacUnityProfileR : InstanceClassWrapper<EightBitdoSFC30MacUnityProfile>
 {

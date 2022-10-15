@@ -4,8 +4,7 @@ namespace HKMirror.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of EightBitdoN30Pro2AndroidUnityProfile allowing
-///     you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class EightBitdoN30Pro2AndroidUnityProfileR : InstanceClassWrapper<EightBitdoN30Pro2AndroidUnityProfile>
 {

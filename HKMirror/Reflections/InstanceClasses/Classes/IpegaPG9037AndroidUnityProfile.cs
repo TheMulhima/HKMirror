@@ -3,8 +3,7 @@ using InControl.UnityDeviceProfiles;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of IpegaPG9037AndroidUnityProfile allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of IpegaPG9037AndroidUnityProfile allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class IpegaPG9037AndroidUnityProfileR : InstanceClassWrapper<IpegaPG9037AndroidUnityProfile>
 {

@@ -1,8 +1,7 @@
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of Sleep2d allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of Sleep2d allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class Sleep2dR : InstanceClassWrapper<Sleep2d>
 {

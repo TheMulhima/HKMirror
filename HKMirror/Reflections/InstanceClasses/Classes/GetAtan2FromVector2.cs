@@ -1,8 +1,7 @@
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of GetAtan2FromVector2 allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of GetAtan2FromVector2 allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class GetAtan2FromVector2R : InstanceClassWrapper<GetAtan2FromVector2>
 {

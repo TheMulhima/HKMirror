@@ -3,8 +3,7 @@ using InControl.UnityDeviceProfiles;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of PlayStation4UnityProfile allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of PlayStation4UnityProfile allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class PlayStation4UnityProfileR : InstanceClassWrapper<PlayStation4UnityProfile>
 {

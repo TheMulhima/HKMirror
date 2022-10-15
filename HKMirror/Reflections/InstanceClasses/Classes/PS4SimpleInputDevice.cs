@@ -3,8 +3,7 @@ using System.Collections.ObjectModel;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of PS4SimpleInputDevice allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of PS4SimpleInputDevice allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class PS4SimpleInputDeviceR : InstanceClassWrapper<PS4SimpleInputDevice>
 {

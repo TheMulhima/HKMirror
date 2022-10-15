@@ -3,8 +3,7 @@ using InControl.UnityDeviceProfiles;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of HavitHVG95WLinuxProfile allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of HavitHVG95WLinuxProfile allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class HavitHVG95WLinuxProfileR : InstanceClassWrapper<HavitHVG95WLinuxProfile>
 {

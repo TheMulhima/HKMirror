@@ -1,4 +1,5 @@
-﻿namespace HKMirror;
+﻿using HKMirror.InstanceClasses;
+namespace HKMirror;
 
 public class HKMirrorMod : Mod
 {

@@ -3,8 +3,7 @@ using InControl.UnityDeviceProfiles;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of LogitechF510LinuxUnityProfile allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of LogitechF510LinuxUnityProfile allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class LogitechF510LinuxUnityProfileR : InstanceClassWrapper<LogitechF510LinuxUnityProfile>
 {

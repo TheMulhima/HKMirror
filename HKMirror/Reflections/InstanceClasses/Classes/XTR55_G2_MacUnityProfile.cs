@@ -3,8 +3,7 @@ using InControl.UnityDeviceProfiles;
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of XTR55_G2_MacUnityProfile allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of XTR55_G2_MacUnityProfile allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class XTR55_G2_MacUnityProfileR : InstanceClassWrapper<XTR55_G2_MacUnityProfile>
 {

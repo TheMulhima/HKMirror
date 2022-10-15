@@ -4,8 +4,7 @@ namespace HKMirror.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of MaxFireBlaze5WindowsUnityProfile allowing you
-///     to
-///     easily get/set fields and call methods without dealing with reflection.
+///     to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
 public class MaxFireBlaze5WindowsUnityProfileR : InstanceClassWrapper<MaxFireBlaze5WindowsUnityProfile>
 {
