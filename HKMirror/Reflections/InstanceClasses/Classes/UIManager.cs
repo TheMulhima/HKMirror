@@ -3,14 +3,12 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace HKMirror.InstanceClasses;
-
 /// <summary>
-///     A class that contains all (public and private) fields and methods of UIManager allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of UIManager allowing you to easily get/set fields and call methods without dealing with reflection. Similar to <see cref="HKMirror.UIManagerR">GameManagerR</see> except that you have to provide an instance
 /// </summary>
-public class UIManagerRR : InstanceClassWrapper<UIManager>
+public class UIManagerR : InstanceClassWrapper<UIManager>
 {
-    public UIManagerRR(UIManager _orig) : base(_orig)
+    public UIManagerR(UIManager _orig) : base(_orig)
     {
     }
 
@@ -638,6 +636,41 @@ public class UIManagerRR : InstanceClassWrapper<UIManager>
         set => orig.currentDynamicMenu = value;
     }
 
+    public bool useGUILayout
+    {
+        get => orig.useGUILayout;
+        set => orig.useGUILayout = value;
+    }
+
+    public bool enabled
+    {
+        get => orig.enabled;
+        set => orig.enabled = value;
+    }
+
+    public bool isActiveAndEnabled => orig.isActiveAndEnabled;
+
+    public Transform transform => orig.transform;
+
+    public GameObject gameObject => orig.gameObject;
+
+    public string tag
+    {
+        get => orig.tag;
+        set => orig.tag = value;
+    }
+
+    public string name
+    {
+        get => orig.name;
+        set => orig.name = value;
+    }
+
+    public HideFlags hideFlags
+    {
+        get => orig.hideFlags;
+        set => orig.hideFlags = value;
+    }
 
     public void Awake()
     {
@@ -684,7 +717,8 @@ public class UIManagerRR : InstanceClassWrapper<UIManager>
         return CallMethod<Coroutine>(new object[] { routine });
     }
 
-    public IEnumerator StartMenuAnimationCoroutineWorker(IEnumerator routine)
+    public IEnumerator
+        StartMenuAnimationCoroutineWorker(IEnumerator routine)
     {
         return CallMethod<IEnumerator>(new object[] { routine });
     }

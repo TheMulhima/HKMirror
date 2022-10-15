@@ -17,14 +17,61 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 using UnityStandardAssets.ImageEffects;
-using Bounds = UnityEngine.Bounds;
+using Bounds = HutongGames.PlayMaker.Actions.Bounds;
 using Logger = InControl.Logger;
+using Mask = ToJ.Mask;
+using Random = System.Random;
 using Touch = InControl.Touch;
 
 namespace HKMirror.InstanceClasses;
 
 public static class InstanceClassWrapperCreator
 {
+    /// <summary>
+    ///     Returns an object that contains all (public and private) fields and methods of PlayerData
+    ///     allowing you to easily get/set fields and call methods without dealing with reflection.
+    /// </summary>
+    public static PlayerDataR Reflect(PlayerData instance)
+    {
+        return new PlayerDataR(instance);
+    }
+
+    /// <summary>
+    ///     Returns an object that contains all (public and private) fields and methods of GameManager
+    ///     allowing you to easily get/set fields and call methods without dealing with reflection.
+    /// </summary>
+    public static GameManagerR Reflect(GameManager instance)
+    {
+        return new GameManagerR(instance);
+    }
+
+    /// <summary>
+    ///     Returns an object that contains all (public and private) fields and methods of HeroControllerR
+    ///     allowing you to easily get/set fields and call methods without dealing with reflection.
+    /// </summary>
+    public static HeroControllerR Reflect(HeroController instance)
+    {
+        return new HeroControllerR(instance);
+    }
+
+    /// <summary>
+    ///     Returns an object that contains all (public and private) fields and methods of UIManagerR
+    ///     allowing you to easily get/set fields and call methods without dealing with reflection.
+    /// </summary>
+    public static UIManagerR Reflect(UIManager instance)
+    {
+        return new UIManagerR(instance);
+    }
+
+    /// <summary>
+    ///     Returns an object that contains all (public and private) fields and methods of System.Random
+    ///     allowing you to easily get/set fields and call methods without dealing with reflection.
+    /// </summary>
+    public static RandomR Reflect(Random instance)
+    {
+        return new RandomR(instance);
+    }
+
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of AccelerateVelocity
     ///     allowing you to easily get/set fields and call methods without dealing with reflection.
@@ -2075,9 +2122,9 @@ public static class InstanceClassWrapperCreator
     ///     Returns an object that contains all (public and private) fields and methods of Bounds
     ///     allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static BoundsR Reflect(HutongGames.PlayMaker.Actions.Bounds instance)
+    public static BoundsR Reflect(Bounds instance)
     {
-        return new(instance);
+        return new BoundsR(instance);
     }
 
     /// <summary>
@@ -4945,7 +4992,7 @@ public static class InstanceClassWrapperCreator
     /// </summary>
     public static ExplosionR Reflect(HutongGames.PlayMaker.Actions.Explosion instance)
     {
-        return new(instance);
+        return new ExplosionR(instance);
     }
 
     /// <summary>
@@ -8996,15 +9043,6 @@ public static class InstanceClassWrapperCreator
     }
 
     /// <summary>
-    ///     Returns an object that contains all (public and private) fields and methods of HeroControllerR
-    ///     allowing you to easily get/set fields and call methods without dealing with reflection.
-    /// </summary>
-    public static HeroControllerRR Reflect(HeroController instance)
-    {
-        return new HeroControllerRR(instance);
-    }
-
-    /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of HeroControllerStates
     ///     allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
@@ -11576,9 +11614,9 @@ public static class InstanceClassWrapperCreator
     ///     Returns an object that contains all (public and private) fields and methods of Mask
     ///     allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static MaskR Reflect(ToJ.Mask instance)
+    public static MaskR Reflect(Mask instance)
     {
-        return new(instance);
+        return new MaskR(instance);
     }
 
     /// <summary>
@@ -20875,15 +20913,6 @@ public static class InstanceClassWrapperCreator
     public static UIButtonSkinsR Reflect(UIButtonSkins instance)
     {
         return new UIButtonSkinsR(instance);
-    }
-
-    /// <summary>
-    ///     Returns an object that contains all (public and private) fields and methods of UIManagerR
-    ///     allowing you to easily get/set fields and call methods without dealing with reflection.
-    /// </summary>
-    public static UIManagerRR Reflect(UIManager instance)
-    {
-        return new UIManagerRR(instance);
     }
 
     /// <summary>

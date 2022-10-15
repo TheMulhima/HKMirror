@@ -1,12 +1,11 @@
 namespace HKMirror.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of HeroController allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of HeroController allowing you to easily get/set fields and call methods without dealing with reflection. Similar to <see cref="HKMirror.HeroControllerR">GameManagerR</see> except that you have to provide an instance
 /// </summary>
-public class HeroControllerRR : InstanceClassWrapper<HeroController>
+public class HeroControllerR : InstanceClassWrapper<HeroController>
 {
-    public HeroControllerRR(HeroController _orig) : base(_orig)
+    public HeroControllerR(HeroController _orig) : base(_orig)
     {
     }
 
@@ -2136,6 +2135,39 @@ public class HeroControllerRR : InstanceClassWrapper<HeroController>
 
     public HeroController UnsafeInstance => HeroController.UnsafeInstance;
 
+    public bool useGUILayout
+    {
+        get => orig.useGUILayout;
+        set => orig.useGUILayout = value;
+    }
+
+    public bool enabled
+    {
+        get => orig.enabled;
+        set => orig.enabled = value;
+    }
+
+    public bool isActiveAndEnabled => orig.isActiveAndEnabled;
+
+    public GameObject gameObject => orig.gameObject;
+
+    public string tag
+    {
+        get => orig.tag;
+        set => orig.tag = value;
+    }
+
+    public string name
+    {
+        get => orig.name;
+        set => orig.name = value;
+    }
+
+    public HideFlags hideFlags
+    {
+        get => orig.hideFlags;
+        set => orig.hideFlags = value;
+    }
 
     public void Awake()
     {
@@ -2432,7 +2464,8 @@ public class HeroControllerRR : InstanceClassWrapper<HeroController>
         orig.SetWieldingLantern(set);
     }
 
-    public void TakeDamage(GameObject go, CollisionSide damageSide, int damageAmount, int hazardType)
+    public void TakeDamage(GameObject go, CollisionSide damageSide, int damageAmount,
+        int hazardType)
     {
         orig.TakeDamage(go, damageSide, damageAmount, hazardType);
     }
@@ -2887,7 +2920,8 @@ public class HeroControllerRR : InstanceClassWrapper<HeroController>
         return CallMethod<IEnumerator>(new object[] { hazardType, angle });
     }
 
-    public IEnumerator StartRecoil(CollisionSide impactSide, bool spawnDamageEffect, int damageAmount)
+    public IEnumerator StartRecoil(CollisionSide impactSide, bool spawnDamageEffect,
+        int damageAmount)
     {
         return CallMethod<IEnumerator>(new object[] { impactSide, spawnDamageEffect, damageAmount });
     }
@@ -3092,7 +3126,8 @@ public class HeroControllerRR : InstanceClassWrapper<HeroController>
         return CallMethod<List<CollisionSide>>(new object[] { layer });
     }
 
-    public List<CollisionSide> CheckTouchingAdvanced(PhysLayers layer)
+    public List<CollisionSide> CheckTouchingAdvanced(
+        PhysLayers layer)
     {
         return CallMethod<List<CollisionSide>>(new object[] { layer });
     }
