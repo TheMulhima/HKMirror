@@ -3,8 +3,9 @@ using System.Linq;
 
 namespace HKMirror.Generator;
 
-public static class RGUtils
+internal static class RGUtils
 {
+    public static string removeSystemType(Type type) => removeSystemType(type.ToString()); 
     public static string removeSystemType(string type)
     {
         type = type.Replace("+", ".");
@@ -179,6 +180,21 @@ public static class RGUtils
 
         return false;
     }
+    
+    public static bool ignoreMethodHook(string name)
+    {
+        List<string> toIgnore = new List<string> { "add_", "remove_"};
+        foreach (var ignore in toIgnore)
+        {
+            if (name.StartsWith(ignore)) return true;
+        }
+
+        if (name.StartsWith("<")) return true;
+
+        if (name.Contains("BeginInvoke")) return true;
+
+        return false;
+    }
 
     public static bool ignoreField(string name)
     {
@@ -186,7 +202,9 @@ public static class RGUtils
         return false;
     }
 
-    public static string replaceDefaultParams(string param)
+    public static string fixBoolName(Type param) => fixBoolName(param.ToString());
+    public static string fixBoolName(bool param) => fixBoolName(param.ToString());
+    public static string fixBoolName(string param)
     {
         return param switch
         {

@@ -6,7 +6,7 @@ namespace HKMirror.Generator;
 /// <summary>
 /// Here you can find the code used to generate the files for Singleton Classes
 /// </summary>
-public static class SingletonClassReflectedGenerator
+internal static class SingletonClassReflectedGenerator
 {
     public static void CreateForSingletonClass(Type TargetType, string ClassName, bool CreateILEnumarator = false)
     {

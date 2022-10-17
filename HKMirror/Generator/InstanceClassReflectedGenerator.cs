@@ -7,7 +7,7 @@ namespace HKMirror.Generator;
 /// <summary>
 /// Here you can find the code used to generate the files for Instance Classes
 /// </summary>
-public static class InstanceClassReflectedGenerator
+internal static class InstanceClassReflectedGenerator
 {
     /// <summary>
     /// Create reflected output for an instance class
@@ -166,7 +166,7 @@ public static class InstanceClassReflectedGenerator
                     {
                         paramsInputString.Append(param.DefaultValue == null
                             ? " = null"
-                            : $" = {RGUtils.replaceDefaultParams(Convert.ChangeType(param.DefaultValue, param.ParameterType).ToString())}");
+                            : $" = {RGUtils.fixBoolName(Convert.ChangeType(param.DefaultValue, param.ParameterType).ToString())}");
                     }
 
                     if (parameters.ToList().IndexOf(param) != parameters.Length - 1)
