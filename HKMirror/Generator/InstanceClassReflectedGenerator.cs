@@ -19,25 +19,25 @@ public static class InstanceClassReflectedGenerator
     {
         if (!TargetType.IsPublic) return;
         string fullName = TargetType.ToString().Replace("+", ".");
-        ReflectedGeneratorUtils.Output("namespace HKMirror.InstanceClasses", InModlog, output);
-        ReflectedGeneratorUtils.Output("{", InModlog, output);
-        ReflectedGeneratorUtils.Output("/// <summary>", InModlog, output);
-        ReflectedGeneratorUtils.Output(
+        RGUtils.Output("namespace HKMirror.InstanceClasses", InModlog, output);
+        RGUtils.Output("{", InModlog, output);
+        RGUtils.Output("/// <summary>", InModlog, output);
+        RGUtils.Output(
             $"///     A class that contains all (public and private) fields and methods of {ClassName} allowing you to", InModlog, output);
-        ReflectedGeneratorUtils.Output("///     easily get/set fields and call methods without dealing with reflection.", InModlog, output);
-        ReflectedGeneratorUtils.Output("/// </summary>", InModlog, output);
-        ReflectedGeneratorUtils.Output($"public class {ClassName}R:InstanceClassWrapper<{fullName}>", InModlog, output);
-        ReflectedGeneratorUtils.Output("{", InModlog, output);
-        ReflectedGeneratorUtils.Output($"public {ClassName}R({fullName} _orig) : base(_orig) " + @"{}", InModlog, output);
+        RGUtils.Output("///     easily get/set fields and call methods without dealing with reflection.", InModlog, output);
+        RGUtils.Output("/// </summary>", InModlog, output);
+        RGUtils.Output($"public class {ClassName}R:InstanceClassWrapper<{fullName}>", InModlog, output);
+        RGUtils.Output("{", InModlog, output);
+        RGUtils.Output($"public {ClassName}R({fullName} _orig) : base(_orig) " + @"{}", InModlog, output);
 
         var fields =
             TargetType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance |
                                  BindingFlags.Static);
         foreach (var field in fields)
         {
-            if (ReflectedGeneratorUtils.ignoreField(field.Name)) continue;
+            if (RGUtils.ignoreField(field.Name)) continue;
             if (!field.FieldType.IsPublic) continue;
-            string fieldType = ReflectedGeneratorUtils.removeSystemType(field.FieldType.ToString());
+            string fieldType = RGUtils.removeSystemType(field.FieldType.ToString());
             StringBuilder fieldString = new StringBuilder();
             fieldString.AppendLine($"public {fieldType} {field.Name}");
             fieldString.AppendLine("{");
@@ -76,7 +76,7 @@ public static class InstanceClassReflectedGenerator
             }
 
             fieldString.AppendLine("}");
-            ReflectedGeneratorUtils.Output(fieldString, InModlog, output);
+            RGUtils.Output(fieldString, InModlog, output);
         }
 
         var properties =
@@ -85,7 +85,7 @@ public static class InstanceClassReflectedGenerator
         foreach (var property in properties)
         {
             if (!property.GetMethod.ReturnType.IsPublic) continue;
-            string propertyType = ReflectedGeneratorUtils.removeSystemType(property.PropertyType.ToString());
+            string propertyType = RGUtils.removeSystemType(property.PropertyType.ToString());
             StringBuilder propertyString = new StringBuilder();
             propertyString.AppendLine($"public {propertyType} {property.Name}");
             propertyString.AppendLine("{");
@@ -131,7 +131,7 @@ public static class InstanceClassReflectedGenerator
             }
 
             propertyString.AppendLine("}");
-            ReflectedGeneratorUtils.Output(propertyString, InModlog, output);
+            RGUtils.Output(propertyString, InModlog, output);
         }
 
         var methods =
@@ -140,7 +140,7 @@ public static class InstanceClassReflectedGenerator
                                   BindingFlags.DeclaredOnly);
         foreach (var method in methods)
         {
-            if (ReflectedGeneratorUtils.ignoreMethod(method.Name)) continue;
+            if (RGUtils.ignoreMethod(method.Name)) continue;
             if (!method.ReturnType.IsPublic) continue;
 
             bool noreturn = false;
@@ -161,12 +161,12 @@ public static class InstanceClassReflectedGenerator
                 {
                     paramsOutputString.Append($"{param.Name}");
 
-                    paramsInputString.Append($"{ReflectedGeneratorUtils.removeSystemType(param.ParameterType.ToString())} {param.Name}");
+                    paramsInputString.Append($"{RGUtils.removeSystemType(param.ParameterType.ToString())} {param.Name}");
                     if (param.HasDefaultValue)
                     {
                         paramsInputString.Append(param.DefaultValue == null
                             ? " = null"
-                            : $" = {ReflectedGeneratorUtils.replaceDefaultParams(Convert.ChangeType(param.DefaultValue, param.ParameterType).ToString())}");
+                            : $" = {RGUtils.replaceDefaultParams(Convert.ChangeType(param.DefaultValue, param.ParameterType).ToString())}");
                     }
 
                     if (parameters.ToList().IndexOf(param) != parameters.Length - 1)
@@ -184,7 +184,7 @@ public static class InstanceClassReflectedGenerator
 
             StringBuilder methodString = new StringBuilder();
             methodString.AppendLine(
-                $"public {ReflectedGeneratorUtils.removeSystemType(method.ReturnType.ToString())} {method.Name} {paramsInputString} =>");
+                $"public {RGUtils.removeSystemType(method.ReturnType.ToString())} {method.Name} {paramsInputString} =>");
 
             if (method.IsPublic)
             {
@@ -216,13 +216,13 @@ public static class InstanceClassReflectedGenerator
                 methodString.AppendLine(noreturn
                     ? $"CallMethod" + (method.IsStatic ? "Static" : "") + $"({paramsOutputString});"
                     : $"CallMethod" + (method.IsStatic ? "Static" : "") +
-                      $"<{ReflectedGeneratorUtils.removeSystemType(method.ReturnType.ToString())}>({paramsOutputString});");
+                      $"<{RGUtils.removeSystemType(method.ReturnType.ToString())}>({paramsOutputString});");
             }
 
-            ReflectedGeneratorUtils.Output(methodString, InModlog, output);
+            RGUtils.Output(methodString, InModlog, output);
         }
 
-        ReflectedGeneratorUtils.Output("}\n}", InModlog, output);
+        RGUtils.Output("}\n}", InModlog, output);
     }
     
     /// <summary>

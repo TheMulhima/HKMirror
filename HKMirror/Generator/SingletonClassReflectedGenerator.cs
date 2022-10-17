@@ -14,7 +14,7 @@ public static class SingletonClassReflectedGenerator
             TargetType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         foreach (var field in fields)
         {
-            string fieldType = ReflectedGeneratorUtils.removeSystemType(field.FieldType.ToString());
+            string fieldType = RGUtils.removeSystemType(field.FieldType.ToString());
             StringBuilder fieldString = new StringBuilder();
             fieldString.AppendLine($"public static {fieldType} {field.Name}");
             fieldString.AppendLine("{");
@@ -32,15 +32,15 @@ public static class SingletonClassReflectedGenerator
             }
 
             fieldString.AppendLine("}");
-            ReflectedGeneratorUtils.Output(fieldString);
+            RGUtils.Output(fieldString);
         }
 
-        ReflectedGeneratorUtils.Output("Starting Fields");
+        RGUtils.Output("Starting Fields");
         var properties =
             TargetType.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         foreach (var property in properties)
         {
-            string propertyType = ReflectedGeneratorUtils.removeSystemType(property.PropertyType.ToString());
+            string propertyType = RGUtils.removeSystemType(property.PropertyType.ToString());
             StringBuilder propertyString = new StringBuilder();
             propertyString.AppendLine($"public static {propertyType} {property.Name}");
             propertyString.AppendLine("{");
@@ -71,10 +71,10 @@ public static class SingletonClassReflectedGenerator
             }
 
             propertyString.AppendLine("}");
-            ReflectedGeneratorUtils.Output(propertyString);
+            RGUtils.Output(propertyString);
         }
 
-        ReflectedGeneratorUtils.Output("Starting Methods");
+        RGUtils.Output("Starting Methods");
         var methods =
             TargetType.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance |
                                   BindingFlags.DeclaredOnly);
@@ -98,7 +98,7 @@ public static class SingletonClassReflectedGenerator
                 {
                     paramsOutputString.Append($"{param.Name}");
 
-                    paramsInputString.Append($"{ReflectedGeneratorUtils.removeSystemType(param.ParameterType.ToString())} {param.Name}");
+                    paramsInputString.Append($"{RGUtils.removeSystemType(param.ParameterType.ToString())} {param.Name}");
                     if (param.HasDefaultValue)
                     {
                         paramsInputString.Append(param.DefaultValue == null
@@ -120,7 +120,7 @@ public static class SingletonClassReflectedGenerator
 
             StringBuilder methodString = new StringBuilder();
             methodString.AppendLine(
-                $"public static {ReflectedGeneratorUtils.removeSystemType(method.ReturnType.ToString())} {method.Name} {paramsInputString} =>");
+                $"public static {RGUtils.removeSystemType(method.ReturnType.ToString())} {method.Name} {paramsInputString} =>");
 
             if (method.IsPublic)
             {
@@ -130,10 +130,10 @@ public static class SingletonClassReflectedGenerator
             {
                 methodString.AppendLine(noreturn
                     ? $"ReflectionHelper.CallMethod<{ClassName}>({ClassName}.instance, \"{method.Name}\"{paramsOutputString});"
-                    : $"ReflectionHelper.CallMethod<{ClassName},{ReflectedGeneratorUtils.removeSystemType(method.ReturnType.ToString())}>({ClassName}.instance, \"{method.Name}\"{paramsOutputString});");
+                    : $"ReflectionHelper.CallMethod<{ClassName},{RGUtils.removeSystemType(method.ReturnType.ToString())}>({ClassName}.instance, \"{method.Name}\"{paramsOutputString});");
             }
 
-            ReflectedGeneratorUtils.Output(methodString);
+            RGUtils.Output(methodString);
         }
 
         if (CreateILEnumarator)
@@ -150,7 +150,7 @@ public static class SingletonClassReflectedGenerator
                     IEnumeratorILHook.AppendLine(
                         $"remove => HookEndpointManager.Unmodify(typeof({ClassName}).GetMethod(\"{method.Name}\", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).GetStateMachineTarget(), value);");
                     IEnumeratorILHook.AppendLine("}");
-                    ReflectedGeneratorUtils.Output(IEnumeratorILHook);
+                    RGUtils.Output(IEnumeratorILHook);
                 }
             }
         }
