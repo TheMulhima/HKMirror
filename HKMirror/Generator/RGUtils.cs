@@ -16,78 +16,26 @@ internal static class RGUtils
         type = type.Replace("System.String", "string");
         type = type.Replace("System.Void", "void");
 
-        if (type.Contains("System.Nullable`1["))
-        {
-            type = type.Replace("System.Nullable`1[", "").Replace("]", "?");
-        }
-        else if (type.Contains("List`1["))
-        {
-            type = type.Replace("List`1[", "List<").Replace("]", ">");
-        }
-        else if (type.Contains("HashSet`1["))
-        {
-            type = type.Replace("HashSet`1[", "HashSet<").Replace("]", ">");
-        }
-        else if (type.Contains("Tuple`1["))
-        {
-            type = type.Replace("Tuple`1[", "Tuple<").Replace("]", ">");
-        }
-        else if (type.Contains("Tuple`2["))
-        {
-            type = type.Replace("Tuple`2[", "Tuple<").Replace("]", ">");
-        }
-        else if (type.Contains("Dictionary<"))
-        {
-            type = type.Replace("Dictionary<", "Dictionary<").Replace("]", ">");
-        }
-        else if (type.Contains("Action`1["))
-        {
-            type = type.Replace("Action`1[", "Action<").Replace("]", ">");
-        }
-        else if (type.Contains("Action`2["))
-        {
-            type = type.Replace("Action`2[", "Action<").Replace("]", ">");
-        }
-        else if (type.Contains("Action`3["))
-        {
-            type = type.Replace("Action`3[", "Action<").Replace("]", ">");
-        }
-        else if (type.Contains("Action`4["))
-        {
-            type = type.Replace("Action`4[", "Action<").Replace("]", ">");
-        }
-        else if (type.Contains("Action`5["))
-        {
-            type = type.Replace("Action`5[", "Action<").Replace("]", ">");
-        }
-        else if (type.Contains("Func`1["))
-        {
-            type = type.Replace("Func`1[", "Func<").Replace("]", ">");
-        }
-        else if (type.Contains("Func`2["))
-        {
-            type = type.Replace("Func`2[", "Func<").Replace("]", ">");
-        }
-        else if (type.Contains("Func`3["))
-        {
-            type = type.Replace("Func`3[", "Func<").Replace("]", ">");
-        }
-        else if (type.Contains("Func`4["))
-        {
-            type = type.Replace("Func`4[", "Func<").Replace("]", ">");
-        }
-        else if (type.Contains("Func`5["))
-        {
-            type = type.Replace("Func`5[", "Func<").Replace("]", ">");
-        }
-        else if (type.Contains("ReadOnlyCollection`1["))
-        {
-            type = type.Replace("ReadOnlyCollection`1[", "ReadOnlyCollection<").Replace("]", ">");
-        }
-        else if (type.Contains("TMP_XmlTagStack`1["))
-        {
-            type = type.Replace("TMP_XmlTagStack`1[", "TMP_XmlTagStack<").Replace("]", ">");
-        }
+        type = type.CheckReplaceAndRemoveRb("System.Nullable`1[", "", '?');
+        type = type.CheckReplaceAndRemoveRb("List`1[", "List<");
+        type = type.CheckReplaceAndRemoveRb("HashSet`1[", "HashSet<");
+        type = type.CheckReplaceAndRemoveRb("Tuple`1[", "Tuple<");
+        type = type.CheckReplaceAndRemoveRb("Tuple`2[", "Tuple<");
+        type = type.CheckReplaceAndRemoveRb("ICollection`1[", "ICollection<");
+        type = type.CheckReplaceAndRemoveRb("Dictionary`2[", "Dictionary<");
+        type = type.CheckReplaceAndRemoveRb("ReadOnlyCollection`1[", "ReadOnlyCollection<");
+        type = type.CheckReplaceAndRemoveRb("TMP_XmlTagStack`1[", "TMP_XmlTagStack<");
+        type = type.CheckReplaceAndRemoveRb("IEnumerable`1[", "IEnumerable<");
+        type = type.CheckReplaceAndRemoveRb("Action`1[", "Action<");
+        type = type.CheckReplaceAndRemoveRb("Action`2[", "Action<");
+        type = type.CheckReplaceAndRemoveRb("Action`3[", "Action<");
+        type = type.CheckReplaceAndRemoveRb("Action`4[", "Action<");
+        type = type.CheckReplaceAndRemoveRb("Action`5[", "Action<");
+        type = type.CheckReplaceAndRemoveRb("Func`1[", "Func<");
+        type = type.CheckReplaceAndRemoveRb("Func`2[", "Func<");
+        type = type.CheckReplaceAndRemoveRb("Func`3[", "Func<");
+        type = type.CheckReplaceAndRemoveRb("Func`4[", "Func<");
+        type = type.CheckReplaceAndRemoveRb("Func`5[", "Func<");
 
         return type;
     }
@@ -108,27 +56,27 @@ internal static class RGUtils
         var subs = type.Split('.');
         type = subs[subs.Length - 1];
 
-        if (type.Contains("System.Nullable`1["))
+        if (type.Contains("[]"))
         {
-            type = type.Replace("System.Nullable`1[", "").Replace("]", "?");
+            type = "Array";
         }
-        else if (type.Contains("List`1["))
+        else if (type.Contains("List`"))
         {
             type = "List";
         }
-        else if (type.Contains("HashSet"))
+        else if (type.Contains("HashSet`"))
         {
             type = "HashSet";
         }
-        else if (type.Contains("Tuple"))
+        else if (type.Contains("Tuple`"))
         {
             type = "Tuple";
         }
-        else if (type.Contains("Dictionary"))
+        else if (type.Contains("Dictionary`"))
         {
             type = "Dictionary";
         }
-        else if (type.Contains("Action"))
+        else if (type.Contains("Action`"))
         {
             type = type switch
             {
@@ -141,7 +89,7 @@ internal static class RGUtils
                 _ => "Action"
             };
         }
-        else if (type.Contains("Func"))
+        else if (type.Contains("Func`"))
         {
             type = type switch
             {
@@ -154,11 +102,11 @@ internal static class RGUtils
                 _ => "Func",
             };
         }
-        else if (type.Contains("ReadOnlyCollection"))
+        else if (type.Contains("ReadOnlyCollection`"))
         {
             type = "ReadOnlyCollection";
         }
-        else if (type.Contains("TMP_XmlTagStack"))
+        else if (type.Contains("TMP_XmlTagStack`"))
         {
             type = "TMP_XmlTagStack";
         }
@@ -168,7 +116,7 @@ internal static class RGUtils
 
     public static bool ignoreMethod(string name)
     {
-        List<string> toIgnore = new List<string> { "add_", "remove_", "get_", "set_" };
+        List<string> toIgnore = new List<string> { "add_", "remove_", "get_", "set_", "GetHashCode", "ToString"};
         foreach (var ignore in toIgnore)
         {
             if (name.StartsWith(ignore)) return true;
@@ -228,6 +176,65 @@ internal static class RGUtils
 
     public static bool isOverloaded(MethodInfo[] methods, string methodName)
     {
-        return methods.Count(x => x.Name == methodName) > 1;
+        var overloads = methods.Where(x => x.Name == methodName);
+
+        int count = overloads.Count();
+        if (count == 1) return false;
+
+        foreach (var m in overloads)
+        {
+            if (ignoreMethodHook(m.Name) || !m.ReturnType.IsPublic || m.IsGenericMethod)
+            {
+                count--;
+            }
+        }
+
+        return count > 1;
     }
+
+    public static string RemoveUnecessaryInName(string name)
+    {
+        name = name.Replace("Platform.IDisengageHandler.", ""); 
+        name = name.Replace("IExternalDebris.", ""); 
+        name = name.Replace("VibrationManager.IVibrationMixerProvider.", ""); 
+        name = name.Replace("IExtraDamageable.RecieveExtraDamage", "RecieveExtraDamage"); 
+        return name;
+    }
+
+    public static string CheckReplaceAndRemoveRb(this string str, string bad, string good, char replaceRbWith = '>')
+    {
+        if (!str.Contains(bad))
+        {
+            return str;
+        }
+        
+        if (bad[bad.Length - 1] != '[')
+        {
+            throw new ArgumentException();
+        }
+
+        int startIndex = str.IndexOf(bad) + bad.Length;
+        int lbCount = 1;
+        
+        for (int i = startIndex; i < str.Length; i++)
+        {
+            if (str[i] == '[')
+            {
+                lbCount++;
+            }
+            else if (str[i] == ']')
+            {
+                lbCount--;
+                if (lbCount == 0)
+                {
+                    var array = str.ToCharArray();
+                    array[i] = replaceRbWith;
+                    str = new string(array).Replace(bad, good);
+                }
+            }
+        }
+
+        return str;
+    }
+    
 }
