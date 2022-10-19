@@ -4,7 +4,7 @@ using HKMirror.Generator;
 
 namespace HKMirror;
 
-public class HKMirrorMod : Mod
+public sealed class HKMirrorMod : Mod
 {
     public override string GetVersion()
     {
