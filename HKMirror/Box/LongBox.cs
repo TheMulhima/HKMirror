@@ -99,5 +99,5 @@ public sealed class LongBox : IComparable, IFormattable, IConvertible, IComparab
     public decimal ToDecimal(IFormatProvider provider) => Convert.ToDecimal(Value);
     public DateTime ToDateTime(IFormatProvider provider) => throw new InvalidCastException($"Invalid cast from '{nameof(LongBox)}' to '{nameof(DateTime)}'.");
     public string ToString(IFormatProvider provider) => Value.ToString(provider);
-    public object ToType(Type type, IFormatProvider provider) => (object) Convert.ToInt32(Value, provider);
+    public object ToType(Type type, IFormatProvider provider) => (object) Convert.ToInt64(Value, provider);
 }

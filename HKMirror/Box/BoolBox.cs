@@ -12,6 +12,8 @@ public sealed class BoolBox : IComparable, IConvertible, IComparable<BoolBox>, I
     public static explicit operator BoolBox(bool value) => new (value);
     public static implicit operator bool(BoolBox box) => box.Value;
 
+    public static BoolBox operator ! (BoolBox box) => (BoolBox)(!box.Value);
+
     public static BoolBox operator & (BoolBox box1, BoolBox box2) => (BoolBox)(box1.Value & box2.Value);
     public static BoolBox operator & (bool val, BoolBox box) => (BoolBox)(val & box.Value);
     public static BoolBox operator & (BoolBox box, bool val) => (BoolBox)(box.Value & val);
