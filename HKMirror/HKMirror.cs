@@ -34,31 +34,5 @@ public sealed class HKMirrorMod : Mod
                 LogError(e);
             }
         }
-
-        MyEvent += (self, amount) =>
-        {
-            amount.Value += 5;
-        };
     }
-    /// <summary>
-    /// A wrapper around value types. Use .Value to get and set the value of it
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public sealed class Box<T> where T : struct {
-        public Box() {
-        }
-
-        public Box(T value) =>
-            Value = value;
-
-        public T Value { get; set; }
-
-        public static implicit operator T(Box<T> box) => box.Value;
-
-        public static explicit operator Box<T>(T value) => new(value);
-    }
-    
-    public delegate void AppendLineFormat_args(GameManager self, Box<int> amount);
-
-    public static event AppendLineFormat_args MyEvent;
 }
