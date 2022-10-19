@@ -2,7 +2,7 @@ using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace HKMirror.InstanceClasses;
+namespace HKMirror.Reflection.InstanceClasses;
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of UIManager allowing you to easily get/set fields and call methods without dealing with reflection. Similar to <see cref="HKMirror.UIManagerR">GameManagerR</see> except that you have to provide an instance
 /// </summary>

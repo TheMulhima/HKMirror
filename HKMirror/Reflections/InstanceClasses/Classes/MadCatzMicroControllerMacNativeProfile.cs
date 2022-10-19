@@ -1,6 +1,6 @@
 using InControl.NativeDeviceProfiles;
 
-namespace HKMirror.InstanceClasses;
+namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of MadCatzMicroControllerMacNativeProfile

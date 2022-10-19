@@ -22,9 +22,9 @@ using Logger = InControl.Logger;
 using Mask = ToJ.Mask;
 using Random = System.Random;
 using Touch = InControl.Touch;
-using HKMirror.InstanceClasses;
+using HKMirror.Reflection.InstanceClasses;
 
-namespace HKMirror;
+namespace HKMirror.Reflection;
 
 public static class InstanceClassWrapperCreator
 {

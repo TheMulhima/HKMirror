@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace HKMirror.InstanceClasses;
+namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
 /// </summary>

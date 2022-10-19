@@ -1,6 +1,6 @@
 using tk2dRuntime.TileMap;
 
-namespace HKMirror.InstanceClasses;
+namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of SpriteChannel allowing you to easily get/set fields and call methods without dealing with reflection.

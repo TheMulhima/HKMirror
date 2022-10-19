@@ -1,7 +1,7 @@
 using Modding.Patches;
 using Newtonsoft.Json.Serialization;
 
-namespace HKMirror.InstanceClasses;
+namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of ShouldSerializeContractResolver allowing you

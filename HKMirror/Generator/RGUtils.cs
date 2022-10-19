@@ -10,10 +10,22 @@ internal static class RGUtils
     {
         type = type.Replace("+", ".");
         type = type.Replace("&", "");
+        
+        //replace simple types
         type = type.Replace("System.Int32", "int");
         type = type.Replace("System.Boolean", "bool");
         type = type.Replace("System.Single", "float");
         type = type.Replace("System.String", "string");
+        type = type.Replace("System.SByte", "sbyte");
+        type = type.Replace("System.Byte", "byte");
+        type = type.Replace("System.Int16", "short");
+        type = type.Replace("System.UInt16", "ushort");
+        type = type.Replace("System.UInt32", "uint");
+        type = type.Replace("System.Int64", "long");
+        type = type.Replace("System.UInt64", "ulong");
+        type = type.Replace("System.Char", "char");
+        type = type.Replace("System.Double", "double");
+        type = type.Replace("System.Decimal", "decimal");
         type = type.Replace("System.Void", "void");
 
         type = type.CheckReplaceAndRemoveRb("System.Nullable`1[", "", '?');

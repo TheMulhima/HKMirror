@@ -1,7 +1,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace HKMirror.InstanceClasses;
+namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of BossDoorChallengeUIBindingButton allowing you

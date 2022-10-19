@@ -19,7 +19,7 @@ internal static class InstanceClassReflectedGenerator
     {
         if (!TargetType.IsPublic) return;
         string fullName = TargetType.ToString().Replace("+", ".");
-        RGUtils.Output("namespace HKMirror.InstanceClasses", InModlog, output);
+        RGUtils.Output("namespace HKMirror.Reflection.InstanceClasses", InModlog, output);
         RGUtils.Output("{", InModlog, output);
         RGUtils.Output("/// <summary>", InModlog, output);
         RGUtils.Output(
