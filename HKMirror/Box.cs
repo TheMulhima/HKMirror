@@ -1,5 +1,5 @@
 ﻿namespace HKMirror;
-public sealed class Box<T> where T : struct
+public sealed class Box<T>
 {
     public Box() {}
 

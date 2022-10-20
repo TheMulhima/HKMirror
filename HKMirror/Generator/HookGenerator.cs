@@ -12,7 +12,7 @@ internal class HookGenerator
     private ParameterInfo[] param;
     
     private StringBuilder HookHandler = new(), Delegates = new(), BeforeOrig = new(), AfterOrig = new(), WithOrig = new();
-    private StringBuilder argsList, argsListWithType, NonGeneratedOrig;
+    private StringBuilder argsList, argsListWithType, BoxargsList, BoxargsListWithType, NonGeneratedOrig;
     private StringBuilder ILHooks = new();
 
     private List<string> FinishedFunctions = new List<string>();
@@ -136,11 +136,12 @@ internal class HookGenerator
             isGeneratedByMonomod_On = ontype != null && OnMonoModEvents.Contains(name);
             isGeneratedByMonomod_IL = iltype != null && ILMonoModEvents.Contains(name);
 
-            (argsList, argsListWithType, NonGeneratedOrig) = GenerateArgsLists(method: method);
+            GenerateArgsLists(method: method);
 
             PopulateHookHandler(method: method);
 
-            Delegates.AppendLine($"public delegate void {name}_args({argsListWithType});");
+            Delegates.AppendLine($"public delegate void {name}_BeforeArgs({BoxargsListWithType});");
+            Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_NormalArgs({argsListWithType});");
 
             PopulateBeforeOrig();
             
@@ -200,7 +201,7 @@ internal class HookGenerator
 
     void PopulateBeforeOrig()
     {
-        BeforeOrig.AppendLine($"public static event Delegates.{name}_args {name}");
+        BeforeOrig.AppendLine($"public static event Delegates.{name}_BeforeArgs {name}");
         BeforeOrig.AppendLine("{\nadd\n{\n");
         BeforeOrig.AppendLine($"HookHandler._before{name} += value;");
         BeforeOrig.AppendLine($"HookHandler.Hook{name}();\n}}");
@@ -210,7 +211,7 @@ internal class HookGenerator
     {
         if (!isIEnumarator)
         {
-            AfterOrig.AppendLine($"public static event Delegates.{name}_args {name}");
+            AfterOrig.AppendLine($"public static event Delegates.{name}_NormalArgs {name}");
             AfterOrig.AppendLine("{\nadd\n{\n");
             AfterOrig.AppendLine($"HookHandler._after{name} += value;");
             AfterOrig.AppendLine($"HookHandler.Hook{name}();\n}}");
@@ -222,10 +223,10 @@ internal class HookGenerator
         
         if (!isGeneratedByMonomod_On)
         {
-            WithOrig.AppendLine($"public static event Delegates.{name}_args {name}\n{{");
+            WithOrig.AppendLine($"public static event Delegates.{name}_NormalArgs {name}\n{{");
            
-            WithOrig.AppendLine($"add => HookEndpointManager.Add<Delegates.{name}_args>(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{method.Name}\", {RGUtils.fixBoolName(!method.IsStatic)}), value);");
-            WithOrig.AppendLine($"remove => HookEndpointManager.Remove<Delegates.{name}_args>(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{method.Name}\", {RGUtils.fixBoolName(!method.IsStatic)}), value);\n}}");
+            WithOrig.AppendLine($"add => HookEndpointManager.Add<Delegates.{name}_NormalArgs>(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{method.Name}\", {RGUtils.fixBoolName(!method.IsStatic)}), value);");
+            WithOrig.AppendLine($"remove => HookEndpointManager.Remove<Delegates.{name}_NormalArgs>(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{method.Name}\", {RGUtils.fixBoolName(!method.IsStatic)}), value);\n}}");
         }
         else
         {
@@ -257,10 +258,12 @@ internal class HookGenerator
         }
     }
 
-    private (StringBuilder, StringBuilder, StringBuilder) GenerateArgsLists(MethodInfo method)
+    private void GenerateArgsLists(MethodInfo method)
     {
         argsListWithType = new();
         argsList = new();
+        BoxargsListWithType = new();
+        BoxargsList = new();
         NonGeneratedOrig = new();
 
         if (!noreturn)
@@ -276,11 +279,15 @@ internal class HookGenerator
         {
             argsListWithType.Append($"{ClassFullName} self");
             argsList.Append($"self");
+            BoxargsListWithType.Append($"Box<{ClassFullName}> self");
+            BoxargsList.Append($"args_self");
             NonGeneratedOrig.Append(ClassFullName);
             if (param.Length > 0)
             {
                 argsListWithType.Append(", ");
                 argsList.Append(", ");
+                BoxargsListWithType.Append(", ");
+                BoxargsList.Append(", ");
                 NonGeneratedOrig.Append(", ");
             }
         }
@@ -306,11 +313,15 @@ internal class HookGenerator
             
             argsListWithType.Append($" {RGUtils.removeSystemType(param[i].ParameterType)} {ParamName}");
             argsList.Append($"{ParamName}");
+            BoxargsListWithType.Append($" Box<{RGUtils.removeSystemType(param[i].ParameterType)}> {ParamName}");
+            BoxargsList.Append($"args_{ParamName}");
             NonGeneratedOrig.Append($" {RGUtils.removeSystemType(param[i].ParameterType)}");
             if (i != param.Length - 1)
             {
                 argsListWithType.Append(", ");
                 argsList.Append(", ");
+                BoxargsListWithType.Append(", ");
+                BoxargsList.Append(", ");
                 NonGeneratedOrig.Append(", ");
             }
         }
@@ -332,8 +343,6 @@ internal class HookGenerator
         {
             NonGeneratedOrig = new StringBuilder("Action");
         }
-
-        return (argsList, argsListWithType, NonGeneratedOrig);
     }
     private void PopulateHookHandler(MethodInfo method)
     {
@@ -350,53 +359,69 @@ internal class HookGenerator
         }
         HookHandler.AppendLine("\n}\n}");
         
-        HookHandler.AppendLine($"internal static event Delegates.{name}_args _before{name};");
-        if (!isIEnumarator) HookHandler.AppendLine($"internal static event Delegates.{name}_args _after{name};");
+        HookHandler.AppendLine($"internal static event Delegates.{name}_BeforeArgs _before{name};");
+        if (!isIEnumarator) HookHandler.AppendLine($"internal static event Delegates.{name}_NormalArgs _after{name};");
 
         if (method.IsStatic && param.Length == 0)
         {
             if (isGeneratedByMonomod_On)
             {
-                HookHandler.AppendLine(
-                    $"private static {RGUtils.removeSystemType(method.ReturnType)} {name}(On.{ClassName}.orig_{name} orig)\n{{");
+                HookHandler.AppendLine($"private static {RGUtils.removeSystemType(method.ReturnType)} {name}(On.{ClassName}.orig_{name} orig)\n{{");
             }
             else
             {
-                HookHandler.AppendLine(
-                    $"private static {RGUtils.removeSystemType(method.ReturnType)} {name}({NonGeneratedOrig} orig)\n{{");
+                HookHandler.AppendLine($"private static {RGUtils.removeSystemType(method.ReturnType)} {name}({NonGeneratedOrig} orig)\n{{");
             }
         }
         else
         {
             if (isGeneratedByMonomod_On)
             {
-                HookHandler.AppendLine(
-                    $"private static {RGUtils.removeSystemType(method.ReturnType)} {name}(On.{ClassName}.orig_{name} orig,{argsListWithType})\n{{");
+                HookHandler.AppendLine($"private static {RGUtils.removeSystemType(method.ReturnType)} {name}(On.{ClassName}.orig_{name} orig,{argsListWithType})\n{{");
             }
             else
             {
-                HookHandler.AppendLine(
-                    $"private static {RGUtils.removeSystemType(method.ReturnType)} {name}({NonGeneratedOrig} orig, {argsListWithType})\n{{");
+                HookHandler.AppendLine($"private static {RGUtils.removeSystemType(method.ReturnType)} {name}({NonGeneratedOrig} orig, {argsListWithType})\n{{");
             }
         }
+        
+        
+        List<(string, string)> paramNames = new List<(string, string)>();
 
-        HookHandler.AppendLine($"_before{name}?.Invoke({argsList});");
+        if (!method.IsStatic)
+        {
+            paramNames.Add(("self", $"args_self"));
+            HookHandler.AppendLine($"var args_self = new Box<{ClassFullName}>(self);");
+        }
+
+        for(int i = 0; i < param.Length; i++)
+        {
+            var ParamName = param[i].Name;
+            if (ParamName == "orig")
+            {
+                ParamName = "orig_";
+            }
+            paramNames.Add((ParamName, $"args_{ParamName}"));
+            HookHandler.AppendLine($"var args_{ParamName} = new Box<{RGUtils.removeSystemType(param[i].ParameterType)}>({ParamName});");
+        }
+
+        HookHandler.AppendLine($"_before{name}?.Invoke({BoxargsList});");
+        
+        foreach (var (normal, box) in paramNames)
+        {
+            HookHandler.AppendLine($"{normal} = {box};");
+        }
+        
         if (isIEnumarator)
         {
             HookHandler.AppendLine($"return orig({argsList});");
         }
         else 
         {
-            if (noreturn)
-            {
-                HookHandler.AppendLine($"orig({argsList});");
-            }
-            else
-            {
-                HookHandler.AppendLine($"var retVal = orig({argsList});");
-            }
+            HookHandler.AppendLine((noreturn ? "" : "var retVal = ") +  $"orig({argsList});");
 
-            HookHandler.AppendLine($"_after{name}?.Invoke({argsList});");
+            HookHandler.AppendLine($"if (_after{name} != null)\n{{");
+            HookHandler.AppendLine((noreturn ? "" : "retVal = ") +  $"_after{name}.Invoke({argsList});\n}}");
             if (!noreturn)
             {
                 HookHandler.AppendLine("return retVal;");
