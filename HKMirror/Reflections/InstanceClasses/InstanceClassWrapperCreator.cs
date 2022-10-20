@@ -19417,14 +19417,6 @@ public static class Extensions
     }
 
     /// <summary>
-    ///     Returns an object that contains all (public and private) fields and methods of XboxSdk allowing you to easily get/set fields and call methods without dealing with reflection.
-    /// </summary>
-    public static XboxSdkR Reflect(this XboxSdk instance)
-    {
-        return new XboxSdkR(instance);
-    }
-
-    /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of XiamoiWindowsUnityProfile allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
     public static XiamoiWindowsUnityProfileR Reflect(this XiamoiWindowsUnityProfile instance)
