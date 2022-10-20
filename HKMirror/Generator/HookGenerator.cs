@@ -12,10 +12,11 @@ internal class HookGenerator
     private ParameterInfo[] param;
     
     private StringBuilder HookHandler = new(), Delegates = new(), BeforeOrig = new(), AfterOrig = new(), WithOrig = new();
-    private StringBuilder argsList, argsListWithType, BoxargsList, BoxargsListWithType, NonGeneratedOrig;
+    private StringBuilder argsList, argsListWithType, NonGeneratedOrig;
     private StringBuilder ILHooks = new();
 
     private List<string> FinishedFunctions = new List<string>();
+    private List<string> ParamsList = new List<string>();
 
     public HookGenerator(Type TargetType, string _className, string Dir, bool inModlog = true)
     {
@@ -138,11 +139,42 @@ internal class HookGenerator
 
             GenerateArgsLists(method: method);
 
+
+            ParamsList = new List<string>();
+            if (!(method.IsStatic && param.Length == 0))
+            {
+                Delegates.AppendLine($"public sealed class Params_{name}\n{{");
+                if (!method.IsStatic)
+                {
+                    ParamsList.Add("self");
+                    Delegates.AppendLine($"public {ClassFullName} self;");
+                }
+
+                foreach (var p in param)
+                {
+                    var ParamName = p.Name;
+                    if (ParamName == "orig")
+                    {
+                        ParamName = "orig_";
+                    }
+
+                    ParamsList.Add(ParamName);
+                    Delegates.AppendLine($"public {RGUtils.removeSystemType(p.ParameterType)} {ParamName};");
+                }
+
+                Delegates.AppendLine("}");
+                Delegates.AppendLine($"public delegate void {name}_BeforeArgs(Params_{name} args);");
+                Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_NormalArgs(Params_{name} args);");
+            }
+            else
+            {
+                Delegates.AppendLine($"public delegate void {name}_BeforeArgs();");
+                Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_NormalArgs();");
+
+            }
+
             PopulateHookHandler(method: method);
-
-            Delegates.AppendLine($"public delegate void {name}_BeforeArgs({BoxargsListWithType});");
-            Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_NormalArgs({argsListWithType});");
-
+            
             PopulateBeforeOrig();
             
             PopulateAfterOrig();
@@ -262,8 +294,6 @@ internal class HookGenerator
     {
         argsListWithType = new();
         argsList = new();
-        BoxargsListWithType = new();
-        BoxargsList = new();
         NonGeneratedOrig = new();
 
         if (!noreturn)
@@ -279,15 +309,11 @@ internal class HookGenerator
         {
             argsListWithType.Append($"{ClassFullName} self");
             argsList.Append($"self");
-            BoxargsListWithType.Append($"Box<{ClassFullName}> self");
-            BoxargsList.Append($"args_self");
             NonGeneratedOrig.Append(ClassFullName);
             if (param.Length > 0)
             {
                 argsListWithType.Append(", ");
                 argsList.Append(", ");
-                BoxargsListWithType.Append(", ");
-                BoxargsList.Append(", ");
                 NonGeneratedOrig.Append(", ");
             }
         }
@@ -313,15 +339,11 @@ internal class HookGenerator
             
             argsListWithType.Append($" {RGUtils.removeSystemType(param[i].ParameterType)} {ParamName}");
             argsList.Append($"{ParamName}");
-            BoxargsListWithType.Append($" Box<{RGUtils.removeSystemType(param[i].ParameterType)}> {ParamName}");
-            BoxargsList.Append($"args_{ParamName}");
             NonGeneratedOrig.Append($" {RGUtils.removeSystemType(param[i].ParameterType)}");
             if (i != param.Length - 1)
             {
                 argsListWithType.Append(", ");
                 argsList.Append(", ");
-                BoxargsListWithType.Append(", ");
-                BoxargsList.Append(", ");
                 NonGeneratedOrig.Append(", ");
             }
         }
@@ -344,6 +366,7 @@ internal class HookGenerator
             NonGeneratedOrig = new StringBuilder("Action");
         }
     }
+
     private void PopulateHookHandler(MethodInfo method)
     {
         HookHandler.AppendLine($"internal static void Hook{name}()\n{{");
@@ -355,10 +378,12 @@ internal class HookGenerator
         }
         else
         {
-            HookHandler.AppendLine($"new Hook(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{name}\", {RGUtils.fixBoolName(!method.IsStatic)}), {name});"); 
+            HookHandler.AppendLine(
+                $"new Hook(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{name}\", {RGUtils.fixBoolName(!method.IsStatic)}), {name});");
         }
+
         HookHandler.AppendLine("\n}\n}");
-        
+
         HookHandler.AppendLine($"internal static event Delegates.{name}_BeforeArgs _before{name};");
         if (!isIEnumarator) HookHandler.AppendLine($"internal static event Delegates.{name}_NormalArgs _after{name};");
 
@@ -366,50 +391,50 @@ internal class HookGenerator
         {
             if (isGeneratedByMonomod_On)
             {
-                HookHandler.AppendLine($"private static {RGUtils.removeSystemType(method.ReturnType)} {name}(On.{ClassName}.orig_{name} orig)\n{{");
+                HookHandler.AppendLine(
+                    $"private static {RGUtils.removeSystemType(method.ReturnType)} {name}(On.{ClassName}.orig_{name} orig)\n{{");
             }
             else
             {
-                HookHandler.AppendLine($"private static {RGUtils.removeSystemType(method.ReturnType)} {name}({NonGeneratedOrig} orig)\n{{");
+                HookHandler.AppendLine(
+                    $"private static {RGUtils.removeSystemType(method.ReturnType)} {name}({NonGeneratedOrig} orig)\n{{");
             }
         }
         else
         {
             if (isGeneratedByMonomod_On)
             {
-                HookHandler.AppendLine($"private static {RGUtils.removeSystemType(method.ReturnType)} {name}(On.{ClassName}.orig_{name} orig,{argsListWithType})\n{{");
+                HookHandler.AppendLine(
+                    $"private static {RGUtils.removeSystemType(method.ReturnType)} {name}(On.{ClassName}.orig_{name} orig,{argsListWithType})\n{{");
             }
             else
             {
-                HookHandler.AppendLine($"private static {RGUtils.removeSystemType(method.ReturnType)} {name}({NonGeneratedOrig} orig, {argsListWithType})\n{{");
+                HookHandler.AppendLine(
+                    $"private static {RGUtils.removeSystemType(method.ReturnType)} {name}({NonGeneratedOrig} orig, {argsListWithType})\n{{");
             }
         }
-        
-        
-        List<(string, string)> paramNames = new List<(string, string)>();
 
-        if (!method.IsStatic)
+        if (ParamsList.Count > 0)
         {
-            paramNames.Add(("self", $"args_self"));
-            HookHandler.AppendLine($"var args_self = new Box<{ClassFullName}>(self);");
-        }
-
-        for(int i = 0; i < param.Length; i++)
-        {
-            var ParamName = param[i].Name;
-            if (ParamName == "orig")
+            HookHandler.AppendLine($"Delegates.Params_{name} @params = new() \n{{");
+            for(int i = 0; i < ParamsList.Count; i++)
             {
-                ParamName = "orig_";
+                HookHandler.AppendLine($"{ParamsList[i]} = {ParamsList[i]}");
+                if (i != ParamsList.Count - 1)
+                {
+                    HookHandler.Append(", ");
+                }
             }
-            paramNames.Add((ParamName, $"args_{ParamName}"));
-            HookHandler.AppendLine($"var args_{ParamName} = new Box<{RGUtils.removeSystemType(param[i].ParameterType)}>({ParamName});");
+            HookHandler.AppendLine("};");
         }
 
-        HookHandler.AppendLine($"_before{name}?.Invoke({BoxargsList});");
+        HookHandler.AppendLine($"_before{name}?.Invoke(" 
+                               + (method.IsStatic ? "" : "@params") +
+                               ");");
         
-        foreach (var (normal, box) in paramNames)
+        foreach (var parameters in ParamsList)
         {
-            HookHandler.AppendLine($"{normal} = {box};");
+            HookHandler.AppendLine($"{parameters} = @params.{parameters};");
         }
         
         if (isIEnumarator)
@@ -421,7 +446,9 @@ internal class HookGenerator
             HookHandler.AppendLine((noreturn ? "" : "var retVal = ") +  $"orig({argsList});");
 
             HookHandler.AppendLine($"if (_after{name} != null)\n{{");
-            HookHandler.AppendLine((noreturn ? "" : "retVal = ") +  $"_after{name}.Invoke({argsList});\n}}");
+            HookHandler.AppendLine((noreturn ? "" : "retVal = ") +  $"_after{name}.Invoke(" 
+                                                                 + (method.IsStatic ? "" : "@params") +
+                                                                 ");");
             if (!noreturn)
             {
                 HookHandler.AppendLine("return retVal;");

@@ -4,6 +4,9 @@ using HKMirror.Generator;
 
 namespace HKMirror;
 
+/// <summary>
+/// The mod class to register the mod with the Modding API
+/// </summary>
 public sealed class HKMirrorMod : Mod
 {
     public override string GetVersion()
@@ -22,9 +25,8 @@ public sealed class HKMirrorMod : Mod
             Directory.CreateDirectory(Dir);
         }
 
-        _ = new HookGenerator(typeof(GameManager), nameof(GameManager), Dir, false);
-
-        /*foreach (var type in typeof(HeroController).Assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract))
+        //_ = new HookGenerator(typeof(GameManager), nameof(GameManager), Dir, false);
+        foreach (var type in typeof(HeroController).Assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract))
         {
             try
             {
@@ -35,6 +37,7 @@ public sealed class HKMirrorMod : Mod
                 LogError($"Did not generate for {type}");
                 LogError(e);
             }
-        }*/
+        }
+
     }
 }
