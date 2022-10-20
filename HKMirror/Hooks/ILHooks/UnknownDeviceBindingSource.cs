@@ -89,14 +89,6 @@ public static class ILUnknownDeviceBindingSource
             ReflectionHelper.GetMethodInfo(typeof(UnknownDeviceBindingSource), "Equals"), value);
     }
 
-    public static event ILContext.Manipulator GetHashCode
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(UnknownDeviceBindingSource), "GetHashCode"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(UnknownDeviceBindingSource), "GetHashCode"), value);
-    }
-
     public static event ILContext.Manipulator get_BindingSourceType
     {
         add => HookEndpointManager.Modify(

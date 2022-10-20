@@ -882,58 +882,6 @@ public static class OnInputDevice
             if (_afterset_RightCommandControl != null) _afterset_RightCommandControl.Invoke(@params);
         }
 
-        internal static void Hookget_AnalogSnapshot()
-        {
-            if (!HookedList.Contains("get_AnalogSnapshot"))
-            {
-                HookedList.Add("get_AnalogSnapshot");
-                new Hook(ReflectionHelper.GetMethodInfo(typeof(InputDevice), "get_AnalogSnapshot"), get_AnalogSnapshot);
-            }
-        }
-
-        internal static event Delegates.get_AnalogSnapshot_BeforeArgs _beforeget_AnalogSnapshot;
-        internal static event Delegates.get_AnalogSnapshot_NormalArgs _afterget_AnalogSnapshot;
-
-        private static InputDevice.AnalogSnapshotEntry[] get_AnalogSnapshot(
-            Func<InputDevice, InputDevice.AnalogSnapshotEntry[]> orig, InputDevice self)
-        {
-            Delegates.Params_get_AnalogSnapshot @params = new()
-            {
-                self = self
-            };
-            _beforeget_AnalogSnapshot?.Invoke(@params);
-            self = @params.self;
-            var retVal = orig(self);
-            if (_afterget_AnalogSnapshot != null) retVal = _afterget_AnalogSnapshot.Invoke(@params);
-            return retVal;
-        }
-
-        internal static void Hookset_AnalogSnapshot()
-        {
-            if (!HookedList.Contains("set_AnalogSnapshot"))
-            {
-                HookedList.Add("set_AnalogSnapshot");
-                new Hook(ReflectionHelper.GetMethodInfo(typeof(InputDevice), "set_AnalogSnapshot"), set_AnalogSnapshot);
-            }
-        }
-
-        internal static event Delegates.set_AnalogSnapshot_BeforeArgs _beforeset_AnalogSnapshot;
-        internal static event Delegates.set_AnalogSnapshot_NormalArgs _afterset_AnalogSnapshot;
-
-        private static void set_AnalogSnapshot(Action<InputDevice, InputDevice.AnalogSnapshotEntry[]> orig,
-            InputDevice self, InputDevice.AnalogSnapshotEntry[] value)
-        {
-            Delegates.Params_set_AnalogSnapshot @params = new()
-            {
-                self = self, value = value
-            };
-            _beforeset_AnalogSnapshot?.Invoke(@params);
-            self = @params.self;
-            value = @params.value;
-            orig(self, value);
-            if (_afterset_AnalogSnapshot != null) _afterset_AnalogSnapshot.Invoke(@params);
-        }
-
         internal static void HookOnAttached()
         {
             if (!HookedList.Contains("OnAttached"))
@@ -3314,8 +3262,6 @@ public static class OnInputDevice
 
         public delegate void get_AnalogSnapshot_BeforeArgs(Params_get_AnalogSnapshot args);
 
-        public delegate InputDevice.AnalogSnapshotEntry[] get_AnalogSnapshot_NormalArgs(Params_get_AnalogSnapshot args);
-
         public delegate void get_AnyButton_BeforeArgs(Params_get_AnyButton args);
 
         public delegate InputControl get_AnyButton_NormalArgs(Params_get_AnyButton args);
@@ -3627,10 +3573,6 @@ public static class OnInputDevice
         public delegate void RequestActivation_BeforeArgs(Params_RequestActivation args);
 
         public delegate void RequestActivation_NormalArgs(Params_RequestActivation args);
-
-        public delegate void set_AnalogSnapshot_BeforeArgs(Params_set_AnalogSnapshot args);
-
-        public delegate void set_AnalogSnapshot_NormalArgs(Params_set_AnalogSnapshot args);
 
         public delegate void set_Controls_BeforeArgs(Params_set_Controls args);
 
@@ -3950,12 +3892,6 @@ public static class OnInputDevice
         public sealed class Params_get_AnalogSnapshot
         {
             public InputDevice self;
-        }
-
-        public sealed class Params_set_AnalogSnapshot
-        {
-            public InputDevice self;
-            public InputDevice.AnalogSnapshotEntry[] value;
         }
 
         public sealed class Params_OnAttached
@@ -4800,26 +4736,6 @@ public static class OnInputDevice
                 HookHandler.Hookset_RightCommandControl();
             }
             remove => HookHandler._beforeset_RightCommandControl -= value;
-        }
-
-        public static event Delegates.get_AnalogSnapshot_BeforeArgs get_AnalogSnapshot
-        {
-            add
-            {
-                HookHandler._beforeget_AnalogSnapshot += value;
-                HookHandler.Hookget_AnalogSnapshot();
-            }
-            remove => HookHandler._beforeget_AnalogSnapshot -= value;
-        }
-
-        public static event Delegates.set_AnalogSnapshot_BeforeArgs set_AnalogSnapshot
-        {
-            add
-            {
-                HookHandler._beforeset_AnalogSnapshot += value;
-                HookHandler.Hookset_AnalogSnapshot();
-            }
-            remove => HookHandler._beforeset_AnalogSnapshot -= value;
         }
 
         public static event Delegates.OnAttached_BeforeArgs OnAttached
@@ -6059,26 +5975,6 @@ public static class OnInputDevice
             remove => HookHandler._afterset_RightCommandControl -= value;
         }
 
-        public static event Delegates.get_AnalogSnapshot_NormalArgs get_AnalogSnapshot
-        {
-            add
-            {
-                HookHandler._afterget_AnalogSnapshot += value;
-                HookHandler.Hookget_AnalogSnapshot();
-            }
-            remove => HookHandler._afterget_AnalogSnapshot -= value;
-        }
-
-        public static event Delegates.set_AnalogSnapshot_NormalArgs set_AnalogSnapshot
-        {
-            add
-            {
-                HookHandler._afterset_AnalogSnapshot += value;
-                HookHandler.Hookset_AnalogSnapshot();
-            }
-            remove => HookHandler._afterset_AnalogSnapshot -= value;
-        }
-
         public static event Delegates.OnAttached_NormalArgs OnAttached
         {
             add
@@ -7247,22 +7143,6 @@ public static class OnInputDevice
                 ReflectionHelper.GetMethodInfo(typeof(InputDevice), "set_RightCommandControl"), value);
             remove => HookEndpointManager.Remove<Delegates.set_RightCommandControl_NormalArgs>(
                 ReflectionHelper.GetMethodInfo(typeof(InputDevice), "set_RightCommandControl"), value);
-        }
-
-        public static event Delegates.get_AnalogSnapshot_NormalArgs get_AnalogSnapshot
-        {
-            add => HookEndpointManager.Add<Delegates.get_AnalogSnapshot_NormalArgs>(
-                ReflectionHelper.GetMethodInfo(typeof(InputDevice), "get_AnalogSnapshot"), value);
-            remove => HookEndpointManager.Remove<Delegates.get_AnalogSnapshot_NormalArgs>(
-                ReflectionHelper.GetMethodInfo(typeof(InputDevice), "get_AnalogSnapshot"), value);
-        }
-
-        public static event Delegates.set_AnalogSnapshot_NormalArgs set_AnalogSnapshot
-        {
-            add => HookEndpointManager.Add<Delegates.set_AnalogSnapshot_NormalArgs>(
-                ReflectionHelper.GetMethodInfo(typeof(InputDevice), "set_AnalogSnapshot"), value);
-            remove => HookEndpointManager.Remove<Delegates.set_AnalogSnapshot_NormalArgs>(
-                ReflectionHelper.GetMethodInfo(typeof(InputDevice), "set_AnalogSnapshot"), value);
         }
 
         public static event Delegates.OnAttached_NormalArgs OnAttached

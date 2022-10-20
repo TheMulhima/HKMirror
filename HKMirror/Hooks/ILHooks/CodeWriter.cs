@@ -62,10 +62,4 @@ public static class ILCodeWriter
         remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(CodeWriter), "AppendLineFormat"),
             value);
     }
-
-    public static event ILContext.Manipulator ToString
-    {
-        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(CodeWriter), "ToString"), value);
-        remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(CodeWriter), "ToString"), value);
-    }
 }

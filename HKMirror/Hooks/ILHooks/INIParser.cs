@@ -41,12 +41,6 @@ public static class ILINIParser
         remove => IL.INIParser.OpenFromString -= value;
     }
 
-    public static event ILContext.Manipulator ToString
-    {
-        add => IL.INIParser.ToString += value;
-        remove => IL.INIParser.ToString -= value;
-    }
-
     public static event ILContext.Manipulator Initialize
     {
         add => IL.INIParser.Initialize += value;

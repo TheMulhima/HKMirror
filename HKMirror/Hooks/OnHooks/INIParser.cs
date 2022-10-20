@@ -138,31 +138,6 @@ public static class OnINIParser
             if (_afterOpenFromString != null) _afterOpenFromString.Invoke(@params);
         }
 
-        internal static void HookToString()
-        {
-            if (!HookedList.Contains("ToString"))
-            {
-                HookedList.Add("ToString");
-                On.INIParser.ToString += ToString;
-            }
-        }
-
-        internal static event Delegates.ToString_BeforeArgs _beforeToString;
-        internal static event Delegates.ToString_NormalArgs _afterToString;
-
-        private static string ToString(On.INIParser.orig_ToString orig, INIParser self)
-        {
-            Delegates.Params_ToString @params = new()
-            {
-                self = self
-            };
-            _beforeToString?.Invoke(@params);
-            self = @params.self;
-            var retVal = orig(self);
-            if (_afterToString != null) retVal = _afterToString.Invoke(@params);
-            return retVal;
-        }
-
         internal static void HookInitialize()
         {
             if (!HookedList.Contains("Initialize"))
@@ -1031,10 +1006,6 @@ public static class OnINIParser
 
         public delegate void SectionDelete_NormalArgs(Params_SectionDelete args);
 
-        public delegate void ToString_BeforeArgs(Params_ToString args);
-
-        public delegate string ToString_NormalArgs(Params_ToString args);
-
         public delegate void WriteValue_string_string_Array_BeforeArgs(Params_WriteValue_string_string_Array args);
 
         public delegate void WriteValue_string_string_Array_NormalArgs(Params_WriteValue_string_string_Array args);
@@ -1344,16 +1315,6 @@ public static class OnINIParser
                 HookHandler.HookOpenFromString();
             }
             remove => HookHandler._beforeOpenFromString -= value;
-        }
-
-        public static event Delegates.ToString_BeforeArgs ToString
-        {
-            add
-            {
-                HookHandler._beforeToString += value;
-                HookHandler.HookToString();
-            }
-            remove => HookHandler._beforeToString -= value;
         }
 
         public static event Delegates.Initialize_BeforeArgs Initialize
@@ -1682,16 +1643,6 @@ public static class OnINIParser
             remove => HookHandler._afterOpenFromString -= value;
         }
 
-        public static event Delegates.ToString_NormalArgs ToString
-        {
-            add
-            {
-                HookHandler._afterToString += value;
-                HookHandler.HookToString();
-            }
-            remove => HookHandler._afterToString -= value;
-        }
-
         public static event Delegates.Initialize_NormalArgs Initialize
         {
             add
@@ -2001,12 +1952,6 @@ public static class OnINIParser
         {
             add => On.INIParser.OpenFromString += value;
             remove => On.INIParser.OpenFromString -= value;
-        }
-
-        public static event On.INIParser.hook_ToString ToString
-        {
-            add => On.INIParser.ToString += value;
-            remove => On.INIParser.ToString -= value;
         }
 
         public static event On.INIParser.hook_Initialize Initialize

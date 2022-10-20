@@ -87,14 +87,6 @@ public static class ILDeviceBindingSource
             value);
     }
 
-    public static event ILContext.Manipulator GetHashCode
-    {
-        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(DeviceBindingSource), "GetHashCode"),
-            value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(DeviceBindingSource), "GetHashCode"), value);
-    }
-
     public static event ILContext.Manipulator get_BindingSourceType
     {
         add => HookEndpointManager.Modify(

@@ -84,14 +84,6 @@ public static class ILKeyBindingSource
             value);
     }
 
-    public static event ILContext.Manipulator GetHashCode
-    {
-        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(KeyBindingSource), "GetHashCode"),
-            value);
-        remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(KeyBindingSource), "GetHashCode"),
-            value);
-    }
-
     public static event ILContext.Manipulator get_BindingSourceType
     {
         add => HookEndpointManager.Modify(

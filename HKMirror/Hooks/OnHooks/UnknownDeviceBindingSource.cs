@@ -283,33 +283,6 @@ public static class OnUnknownDeviceBindingSource
             if (_afterEquals_Object != null) retVal = _afterEquals_Object.Invoke(@params);
             return retVal;
         }
-
-        internal static void HookGetHashCode()
-        {
-            if (!HookedList.Contains("GetHashCode"))
-            {
-                HookedList.Add("GetHashCode");
-                new Hook(ReflectionHelper.GetMethodInfo(typeof(UnknownDeviceBindingSource), "GetHashCode"),
-                    GetHashCode);
-            }
-        }
-
-        internal static event Delegates.GetHashCode_BeforeArgs _beforeGetHashCode;
-        internal static event Delegates.GetHashCode_NormalArgs _afterGetHashCode;
-
-        private static int GetHashCode(Func<UnknownDeviceBindingSource, int> orig, UnknownDeviceBindingSource self)
-        {
-            Delegates.Params_GetHashCode @params = new()
-            {
-                self = self
-            };
-            _beforeGetHashCode?.Invoke(@params);
-            self = @params.self;
-            var retVal = orig(self);
-            if (_afterGetHashCode != null) retVal = _afterGetHashCode.Invoke(@params);
-            return retVal;
-        }
-
         internal static void Hookget_BindingSourceType()
         {
             if (!HookedList.Contains("get_BindingSourceType"))
@@ -458,10 +431,6 @@ public static class OnUnknownDeviceBindingSource
 
         public delegate string get_Name_NormalArgs(Params_get_Name args);
 
-        public delegate void GetHashCode_BeforeArgs(Params_GetHashCode args);
-
-        public delegate int GetHashCode_NormalArgs(Params_GetHashCode args);
-
         public delegate void GetState_BeforeArgs(Params_GetState args);
 
         public delegate bool GetState_NormalArgs(Params_GetState args);
@@ -534,11 +503,6 @@ public static class OnUnknownDeviceBindingSource
         public sealed class Params_Equals_Object
         {
             public object other;
-            public UnknownDeviceBindingSource self;
-        }
-
-        public sealed class Params_GetHashCode
-        {
             public UnknownDeviceBindingSource self;
         }
 
@@ -669,16 +633,6 @@ public static class OnUnknownDeviceBindingSource
                 HookHandler.HookEquals_Object();
             }
             remove => HookHandler._beforeEquals_Object -= value;
-        }
-
-        public static event Delegates.GetHashCode_BeforeArgs GetHashCode
-        {
-            add
-            {
-                HookHandler._beforeGetHashCode += value;
-                HookHandler.HookGetHashCode();
-            }
-            remove => HookHandler._beforeGetHashCode -= value;
         }
 
         public static event Delegates.get_BindingSourceType_BeforeArgs get_BindingSourceType
@@ -827,16 +781,6 @@ public static class OnUnknownDeviceBindingSource
             remove => HookHandler._afterEquals_Object -= value;
         }
 
-        public static event Delegates.GetHashCode_NormalArgs GetHashCode
-        {
-            add
-            {
-                HookHandler._afterGetHashCode += value;
-                HookHandler.HookGetHashCode();
-            }
-            remove => HookHandler._afterGetHashCode -= value;
-        }
-
         public static event Delegates.get_BindingSourceType_NormalArgs get_BindingSourceType
         {
             add
@@ -962,14 +906,6 @@ public static class OnUnknownDeviceBindingSource
                 ReflectionHelper.GetMethodInfo(typeof(UnknownDeviceBindingSource), "Equals"), value);
             remove => HookEndpointManager.Remove<Delegates.Equals_Object_NormalArgs>(
                 ReflectionHelper.GetMethodInfo(typeof(UnknownDeviceBindingSource), "Equals"), value);
-        }
-
-        public static event Delegates.GetHashCode_NormalArgs GetHashCode
-        {
-            add => HookEndpointManager.Add<Delegates.GetHashCode_NormalArgs>(
-                ReflectionHelper.GetMethodInfo(typeof(UnknownDeviceBindingSource), "GetHashCode"), value);
-            remove => HookEndpointManager.Remove<Delegates.GetHashCode_NormalArgs>(
-                ReflectionHelper.GetMethodInfo(typeof(UnknownDeviceBindingSource), "GetHashCode"), value);
         }
 
         public static event Delegates.get_BindingSourceType_NormalArgs get_BindingSourceType

@@ -217,31 +217,6 @@ public static class OnCodeWriter
             orig(self, format, args);
             if (_afterAppendLineFormat != null) _afterAppendLineFormat.Invoke(@params);
         }
-
-        internal static void HookToString()
-        {
-            if (!HookedList.Contains("ToString"))
-            {
-                HookedList.Add("ToString");
-                new Hook(ReflectionHelper.GetMethodInfo(typeof(CodeWriter), "ToString"), ToString);
-            }
-        }
-
-        internal static event Delegates.ToString_BeforeArgs _beforeToString;
-        internal static event Delegates.ToString_NormalArgs _afterToString;
-
-        private static string ToString(Func<CodeWriter, string> orig, CodeWriter self)
-        {
-            Delegates.Params_ToString @params = new()
-            {
-                self = self
-            };
-            _beforeToString?.Invoke(@params);
-            self = @params.self;
-            var retVal = orig(self);
-            if (_afterToString != null) retVal = _afterToString.Invoke(@params);
-            return retVal;
-        }
     }
 
     /// <summary>
@@ -280,10 +255,6 @@ public static class OnCodeWriter
         public delegate void IncreaseIndent_BeforeArgs(Params_IncreaseIndent args);
 
         public delegate void IncreaseIndent_NormalArgs(Params_IncreaseIndent args);
-
-        public delegate void ToString_BeforeArgs(Params_ToString args);
-
-        public delegate string ToString_NormalArgs(Params_ToString args);
 
         public sealed class Params_IncreaseIndent
         {
@@ -424,16 +395,6 @@ public static class OnCodeWriter
             }
             remove => HookHandler._beforeAppendLineFormat -= value;
         }
-
-        public static event Delegates.ToString_BeforeArgs ToString
-        {
-            add
-            {
-                HookHandler._beforeToString += value;
-                HookHandler.HookToString();
-            }
-            remove => HookHandler._beforeToString -= value;
-        }
     }
 
     /// <summary>
@@ -520,16 +481,6 @@ public static class OnCodeWriter
             }
             remove => HookHandler._afterAppendLineFormat -= value;
         }
-
-        public static event Delegates.ToString_NormalArgs ToString
-        {
-            add
-            {
-                HookHandler._afterToString += value;
-                HookHandler.HookToString();
-            }
-            remove => HookHandler._afterToString -= value;
-        }
     }
 
     /// <summary>
@@ -600,14 +551,6 @@ public static class OnCodeWriter
                 ReflectionHelper.GetMethodInfo(typeof(CodeWriter), "AppendLineFormat"), value);
             remove => HookEndpointManager.Remove<Delegates.AppendLineFormat_NormalArgs>(
                 ReflectionHelper.GetMethodInfo(typeof(CodeWriter), "AppendLineFormat"), value);
-        }
-
-        public static event Delegates.ToString_NormalArgs ToString
-        {
-            add => HookEndpointManager.Add<Delegates.ToString_NormalArgs>(
-                ReflectionHelper.GetMethodInfo(typeof(CodeWriter), "ToString"), value);
-            remove => HookEndpointManager.Remove<Delegates.ToString_NormalArgs>(
-                ReflectionHelper.GetMethodInfo(typeof(CodeWriter), "ToString"), value);
         }
     }
 }
