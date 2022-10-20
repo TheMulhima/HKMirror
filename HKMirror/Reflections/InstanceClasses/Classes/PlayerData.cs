@@ -1,7 +1,7 @@
 ﻿namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
-///     A class that allows you to access PlayerData directly while also using PlayerData.Get/Set functions. Similar to <see cref="PlayerDataAccess">PlayerDataR</see> except that you have to provide an instance
+///     A class that allows you to access PlayerData directly while also using PlayerData.Get/Set functions. Similar to <see cref="PlayerDataAccess">PlayerDataAccess</see> except that you have to provide an instance
 /// </summary>
 public class PlayerDataR : InstanceClassWrapper<PlayerData>
 {

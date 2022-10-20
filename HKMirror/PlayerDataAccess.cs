@@ -1,4 +1,4 @@
-﻿namespace HKMirror.Reflection;
+﻿namespace HKMirror;
 
 /// <summary>
 ///     A class that allows you to access PD directly while also using PlayerData.Get/Set functions. If you want to provide your own instance, see
