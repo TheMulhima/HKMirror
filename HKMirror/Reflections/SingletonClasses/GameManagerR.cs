@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Audio;
 
-namespace HKMirror.Reflection;
+namespace HKMirror.Reflection.SingletonClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of GameManager allowing you to easily get/set fields and call methods without dealing with reflection.

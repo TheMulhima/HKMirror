@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace HKMirror.Reflection;
+namespace HKMirror.Reflection.SingletonClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of UIManager allowing you to easily get/set fields and call methods without dealing with reflection.

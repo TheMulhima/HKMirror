@@ -26,7 +26,7 @@ using HKMirror.Reflection.InstanceClasses;
 
 namespace HKMirror.Reflection;
 
-public static class InstanceClassWrapperCreator
+public static class Extensions
 {
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of PlayerData allowing you to easily get/set fields and call methods without dealing with reflection.

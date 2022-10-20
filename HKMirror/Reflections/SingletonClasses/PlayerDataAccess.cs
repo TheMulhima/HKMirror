@@ -2,7 +2,7 @@
 
 /// <summary>
 ///     A class that allows you to access PD directly while also using PlayerData.Get/Set functions. If you want to provide your own instance, see
-/// <see cref="InstanceClasses.PlayerDataR">PlayerDataR</see> 
+/// <see cref="HKMirror.Reflection.InstanceClasses.PlayerDataR">PlayerDataR</see> 
 /// </summary>
 public static class PlayerDataAccess
 {
