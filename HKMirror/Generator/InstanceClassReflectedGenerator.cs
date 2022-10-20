@@ -142,8 +142,40 @@ internal static class InstanceClassReflectedGenerator
         {
             if (RGUtils.ignoreMethod(method.Name)) continue;
             if (!method.ReturnType.IsPublic) continue;
+            bool ToSkip = false;
+            string reason = String.Empty;
+
+            foreach (var p in method.GetParameters())
+            {
+                if (!p.ParameterType.IsPublic)
+                {
+                    ToSkip = true;
+                    reason = $"{p.ParameterType} {p.Name} isnt public";
+                    break;
+                }
+                if (p.ParameterType.IsConstructedGenericType)
+                {
+                    foreach (var subType in p.ParameterType.GetGenericArguments())
+                    {
+                        if (!subType.IsPublic)
+                        {
+                            ToSkip = true;
+                            reason = $"{p.ParameterType} {p.Name} has a generic non public type";
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (ToSkip)
+            {
+                Modding.Logger.LogError($"{ClassName}.{method.Name} params didnt make the cut cuz {reason}");
+                continue;
+            }
 
             bool noreturn = false;
+            
+            string name =  RGUtils.RemoveUnecessaryInName(method.Name);
 
             var parameters = method.GetParameters();
             StringBuilder paramsInputString = new StringBuilder();
@@ -184,7 +216,7 @@ internal static class InstanceClassReflectedGenerator
 
             StringBuilder methodString = new StringBuilder();
             methodString.AppendLine(
-                $"public {RGUtils.removeSystemType(method.ReturnType.ToString())} {method.Name} {paramsInputString} =>");
+                $"public {RGUtils.removeSystemType(method.ReturnType.ToString())} {name} {paramsInputString} =>");
 
             if (method.IsPublic)
             {
@@ -192,22 +224,22 @@ internal static class InstanceClassReflectedGenerator
                 {
                     if (!method.IsGenericMethod)
                     {
-                        methodString.AppendLine($"orig.{method.Name}({paramsOutputString});");
+                        methodString.AppendLine($"orig.{name}({paramsOutputString});");
                     }
                     else
                     {
-                        methodString.AppendLine($"orig.{method.Name}<T>({paramsOutputString});");
+                        methodString.AppendLine($"orig.{name}<T>({paramsOutputString});");
                     }
                 }
                 else
                 {
                     if (!method.IsGenericMethod)
                     {
-                        methodString.AppendLine($"{fullName}.{method.Name}({paramsOutputString});");
+                        methodString.AppendLine($"{fullName}.{name}({paramsOutputString});");
                     }
                     else
                     {
-                        methodString.AppendLine($"{fullName}.{method.Name}<T>({paramsOutputString});");
+                        methodString.AppendLine($"{fullName}.{name}<T>({paramsOutputString});");
                     }
                 }
             }
