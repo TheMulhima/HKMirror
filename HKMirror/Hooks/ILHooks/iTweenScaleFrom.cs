@@ -1,0 +1,38 @@
+using MonoMod.RuntimeDetour.HookGen;
+
+namespace HKMirror.Hooks.ILHooks;
+
+/// <summary>
+///     Contains all correct IL Hooks for iTweenScaleFrom.<br />
+///     Gives the correct GetStateMachineTarget version of IEnumerators ILs that run after every yeild return.<br />
+///     Includes ILHooks that aren't in the IL namespace such as API generated functions and property getters/setters.
+/// </summary>
+public static class ILiTweenScaleFrom
+{
+    public static event ILContext.Manipulator Reset
+    {
+        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(iTweenScaleFrom), "Reset"), value);
+        remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(iTweenScaleFrom), "Reset"), value);
+    }
+
+    public static event ILContext.Manipulator OnEnter
+    {
+        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(iTweenScaleFrom), "OnEnter"), value);
+        remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(iTweenScaleFrom), "OnEnter"),
+            value);
+    }
+
+    public static event ILContext.Manipulator OnExit
+    {
+        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(iTweenScaleFrom), "OnExit"), value);
+        remove =>
+            HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(iTweenScaleFrom), "OnExit"), value);
+    }
+
+    public static event ILContext.Manipulator DoiTween
+    {
+        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(iTweenScaleFrom), "DoiTween"), value);
+        remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(iTweenScaleFrom), "DoiTween"),
+            value);
+    }
+}
