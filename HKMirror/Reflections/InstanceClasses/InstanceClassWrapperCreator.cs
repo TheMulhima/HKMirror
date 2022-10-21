@@ -31,33 +31,33 @@ public static class Extensions
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of PlayerData allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static InstanceClasses.PlayerDataR Reflect(this PlayerData instance)
+    public static PlayerDataR Reflect(this PlayerData instance)
     {
-        return new InstanceClasses.PlayerDataR(instance);
+        return new PlayerDataR(instance);
     }
 
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of GameManager allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static InstanceClasses.GameManagerR Reflect(this GameManager instance)
+    public static GameManagerRR Reflect(this GameManager instance)
     {
-        return new InstanceClasses.GameManagerR(instance);
+        return new GameManagerRR(instance);
     }
 
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of HeroControllerR allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static InstanceClasses.HeroControllerR Reflect(this HeroController instance)
+    public static HeroControllerRR Reflect(this HeroController instance)
     {
-        return new InstanceClasses.HeroControllerR(instance);
+        return new HeroControllerRR(instance);
     }
 
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of UIManagerR allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static InstanceClasses.UIManagerR Reflect(this UIManager instance)
+    public static UIManagerRR Reflect(this UIManager instance)
     {
-        return new InstanceClasses.UIManagerR(instance);
+        return new UIManagerRR(instance);
     }
 
     /// <summary>
@@ -5017,9 +5017,9 @@ public static class Extensions
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of GameCameras allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static InstanceClasses.GameCamerasR Reflect(this GameCameras instance)
+    public static GameCamerasRR Reflect(this GameCameras instance)
     {
-        return new InstanceClasses.GameCamerasR(instance);
+        return new GameCamerasRR(instance);
     }
 
     /// <summary>
@@ -8539,9 +8539,9 @@ public static class Extensions
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of InputHandler allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static InstanceClasses.InputHandlerR Reflect(this InputHandler instance)
+    public static InputHandlerRR Reflect(this InputHandler instance)
     {
-        return new InstanceClasses.InputHandlerR(instance);
+        return new InputHandlerRR(instance);
     }
 
     /// <summary>
@@ -13625,9 +13625,9 @@ public static class Extensions
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of SceneData allowing you to easily get/set fields and call methods without dealing with reflection.
     /// </summary>
-    public static InstanceClasses.SceneDataR Reflect(this SceneData instance)
+    public static SceneDataRR Reflect(this SceneData instance)
     {
-        return new InstanceClasses.SceneDataR(instance);
+        return new SceneDataRR(instance);
     }
 
     /// <summary>

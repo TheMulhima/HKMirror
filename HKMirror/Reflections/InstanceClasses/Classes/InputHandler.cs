@@ -3,9 +3,9 @@ namespace HKMirror.Reflection.InstanceClasses;
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of InputHandler allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
-public class InputHandlerR : InstanceClassWrapper<InputHandler>
+public class InputHandlerRR : InstanceClassWrapper<InputHandler>
 {
-    public InputHandlerR(InputHandler _orig) : base(_orig)
+    public InputHandlerRR(InputHandler _orig) : base(_orig)
     {
     }
 

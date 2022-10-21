@@ -3,9 +3,9 @@ namespace HKMirror.Reflection.InstanceClasses;
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of SceneData allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
-public class SceneDataR : InstanceClassWrapper<SceneData>
+public class SceneDataRR : InstanceClassWrapper<SceneData>
 {
-    public SceneDataR(SceneData _orig) : base(_orig)
+    public SceneDataRR(SceneData _orig) : base(_orig)
     {
     }
 

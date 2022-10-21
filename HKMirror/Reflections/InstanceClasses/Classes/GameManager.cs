@@ -3,9 +3,9 @@
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of GameManager allowing you to easily get/set fields and call methods without dealing with reflection. Similar to <see cref="HKMirror.Reflection.SingletonClasses.GameManagerR">GameManagerR</see> except that you have to provide an instance
 /// </summary>
-public class GameManagerR:InstanceClassWrapper<GameManager>
+public class GameManagerRR:InstanceClassWrapper<GameManager>
 {
-public GameManagerR(GameManager _orig) : base(_orig) {}
+public GameManagerRR(GameManager _orig) : base(_orig) {}
 public bool verboseMode
 {
 get => GetField<bool>();
