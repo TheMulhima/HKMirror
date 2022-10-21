@@ -604,7 +604,7 @@ public static class OnSteamOnlineSubsystem
             remove => HookHandler._beforeget_AreAchievementsFetched -= value;
         }
 
-
+     
         public static event Delegates.PushAchievementUnlock_BeforeArgs PushAchievementUnlock
         {
             add
@@ -681,6 +681,7 @@ public static class OnSteamOnlineSubsystem
             remove => HookHandler._afterOnSteamLogMessage -= value;
         }
 
+        
 
         public static event Delegates.get_AreAchievementsFetched_AfterArgs get_AreAchievementsFetched
         {
