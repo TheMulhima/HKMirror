@@ -1620,7 +1620,7 @@ public static class Ontk2dCamera
             Delegates.Params_GetProjectionMatrixForOverride @params = new()
             {
                 self = self, settings = settings, currentOverride = currentOverride, pixelWidth = pixelWidth,
-                pixelHeight = pixelHeight, halfTexelOffset = halfTexelOffset, 
+                pixelHeight = pixelHeight, halfTexelOffset = halfTexelOffset,
             };
             if (_beforeGetProjectionMatrixForOverride != null)
             {

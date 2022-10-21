@@ -3730,7 +3730,7 @@ public static class OnPlayerData
         {
             public PlayerData self;
         }
-        
+
         public sealed class Params_HasMapForScene
         {
             public PlayerData self;
@@ -4604,7 +4604,6 @@ public static class OnPlayerData
     /// </summary>
     public static class BeforeOrig
     {
-
         public static event Delegates.HasMapForScene_BeforeArgs HasMapForScene
         {
             add
@@ -5304,7 +5303,6 @@ public static class OnPlayerData
     /// </summary>
     public static class AfterOrig
     {
-       
         public static event Delegates.HasMapForScene_AfterArgs HasMapForScene
         {
             add
