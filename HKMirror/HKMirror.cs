@@ -7,7 +7,7 @@ public sealed class HKMirrorMod : Mod
 {
     public override string GetVersion()
     {
-        return "v1.0.0.0";
+        return "v2.0.0.0";
     }
 
     public override void Initialize()
