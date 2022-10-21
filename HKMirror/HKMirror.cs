@@ -1,4 +1,4 @@
-﻿using HKMirror.Hooks.OnHooks;
+﻿
 
 namespace HKMirror;
 
@@ -25,7 +25,7 @@ public sealed class HKMirrorMod : Mod
             System.IO.Directory.CreateDirectory(Dir);
         }
 
-        _ = new Generator.HookGenerator(typeof(GameManager), nameof(GameManager), Dir, false);
+        Generator.HookGenerator.GenerateAllHookFiles();
     }
 
     public static void DoLogError(object log)
