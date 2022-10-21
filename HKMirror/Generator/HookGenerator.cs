@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Text;
+using HKMirror.Hooks.OnHooks;
 
 namespace HKMirror.Generator;
 
@@ -163,12 +164,19 @@ internal class HookGenerator
 
                 Delegates.AppendLine("}");
                 Delegates.AppendLine($"public delegate void {name}_BeforeArgs(Params_{name} args);");
-                Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_NormalArgs(Params_{name} args);");
+                Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_AfterArgs(Params_{name} args" +
+                                     (noreturn ? "" : $", {RGUtils.removeSystemType(method.ReturnType)} ret")
+                                     +");");
+                Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_WithArgs ({NonGeneratedOrig} orig, {argsListWithType});");
+                
             }
             else
             {
                 Delegates.AppendLine($"public delegate void {name}_BeforeArgs();");
-                Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_NormalArgs();");
+                Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_AfterArgs(" +
+                                     (noreturn ? "" : $"{RGUtils.removeSystemType(method.ReturnType)} ret")
+                                     +");");
+                Delegates.AppendLine($"public delegate {RGUtils.removeSystemType(method.ReturnType)} {name}_WithArgs ({NonGeneratedOrig} orig);");
 
             }
 
@@ -242,7 +250,7 @@ internal class HookGenerator
     {
         if (!isIEnumarator)
         {
-            AfterOrig.AppendLine($"public static event Delegates.{name}_NormalArgs {name}");
+            AfterOrig.AppendLine($"public static event Delegates.{name}_AfterArgs {name}");
             AfterOrig.AppendLine("{\nadd\n{\n");
             AfterOrig.AppendLine($"HookHandler._after{name} += value;");
             AfterOrig.AppendLine($"HookHandler.Hook{name}();\n}}");
@@ -254,10 +262,10 @@ internal class HookGenerator
         
         if (!isGeneratedByMonomod_On)
         {
-            WithOrig.AppendLine($"public static event Delegates.{name}_NormalArgs {name}\n{{");
+            WithOrig.AppendLine($"public static event Delegates.{name}_WithArgs {name}\n{{");
            
-            WithOrig.AppendLine($"add => HookEndpointManager.Add<Delegates.{name}_NormalArgs>(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{method.Name}\", {RGUtils.fixBoolName(!method.IsStatic)}), value);");
-            WithOrig.AppendLine($"remove => HookEndpointManager.Remove<Delegates.{name}_NormalArgs>(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{method.Name}\", {RGUtils.fixBoolName(!method.IsStatic)}), value);\n}}");
+            WithOrig.AppendLine($"add => HookEndpointManager.Add<Delegates.{name}_WithArgs>(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{method.Name}\", {RGUtils.fixBoolName(!method.IsStatic)}), value);");
+            WithOrig.AppendLine($"remove => HookEndpointManager.Remove<Delegates.{name}_WithArgs>(ReflectionHelper.GetMethodInfo(typeof({ClassFullName}), \"{method.Name}\", {RGUtils.fixBoolName(!method.IsStatic)}), value);\n}}");
         }
         else
         {
@@ -384,7 +392,7 @@ internal class HookGenerator
         HookHandler.AppendLine("\n}\n}");
 
         HookHandler.AppendLine($"internal static event Delegates.{name}_BeforeArgs _before{name};");
-        if (!isIEnumarator) HookHandler.AppendLine($"internal static event Delegates.{name}_NormalArgs _after{name};");
+        if (!isIEnumarator) HookHandler.AppendLine($"internal static event Delegates.{name}_AfterArgs _after{name};");
 
         if (method.IsStatic && param.Length == 0)
         {
@@ -426,10 +434,13 @@ internal class HookGenerator
             }
             HookHandler.AppendLine("};");
         }
-
+        HookHandler.AppendLine($"if (_before{name} != null)\n{{");
+        HookHandler.AppendLine($"foreach (Delegates.{name}_BeforeArgs toInvoke in _before{name}.GetInvocationList())\n{{");
+        HookHandler.AppendLine("try\n{");
         HookHandler.AppendLine($"_before{name}?.Invoke(" 
                                + (ParamsList.Count == 0 ? "" : "@params") +
-                               ");");
+                               ");\n}");
+        HookHandler.AppendLine("catch (Exception e) \n{ HKMirrorMod.DoLogError(e);\n}\n}\n}");
         
         foreach (var parameters in ParamsList)
         {
@@ -445,10 +456,14 @@ internal class HookGenerator
             HookHandler.AppendLine((noreturn ? "" : "var retVal = ") +  $"orig({argsList});");
 
             HookHandler.AppendLine($"if (_after{name} != null)\n{{");
+            HookHandler.AppendLine($"foreach (Delegates.{name}_AfterArgs toInvoke in _after{name}.GetInvocationList())\n{{");
+            HookHandler.AppendLine("try\n{");
             HookHandler.AppendLine((noreturn ? "" : "retVal = ") + 
                                    $"_after{name}.Invoke(" + 
                                    (ParamsList.Count == 0 ? "" : "@params") + 
+                                   (noreturn ? "" : ", retVal") + 
                                    ");\n}");
+            HookHandler.AppendLine("catch (Exception e) \n{ HKMirrorMod.DoLogError(e);\n}\n}\n}");
             if (!noreturn)
             {
                 HookHandler.AppendLine("return retVal;");
