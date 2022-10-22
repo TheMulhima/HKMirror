@@ -836,7 +836,7 @@ Delegates.Params_IsAtHorizontalSceneBounds @params = new()
 {
 self = self
 , targetDest = targetDest
-, leftSide = leftSide
+, 
 };
 if (_beforeIsAtHorizontalSceneBounds != null)
 {

@@ -215,8 +215,7 @@ Delegates.Params_CountCompletion @params = new()
 {
 self = self
 , tier = tier
-, completed = completed
-, total = total
+, 
 };
 if (_beforeCountCompletion != null)
 {
