@@ -11,21 +11,13 @@ public sealed class HKMirrorMod : Mod
     
     public override string GetVersion()
     {
-        return "v2.0.0.0";
+        return "v2.0.0.1";
     }
 
     public override void Initialize()
     {
         Instance = this;
         Log("Loading HKMirror Mod");
-        var Dir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/Hooks";
-
-        if (!System.IO.Directory.Exists(Dir))
-        {
-            System.IO.Directory.CreateDirectory(Dir);
-        }
-
-        Generator.HookGenerator.GenerateAllHookFiles();
     }
 
     public static void DoLogError(object log)
