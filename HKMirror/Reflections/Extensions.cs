@@ -1,5 +1,4 @@
 ﻿using GUIBlendModes;
-using HKMirror.Reflection.InstanceClasses;
 using HutongGames.PlayMaker.Ecosystem.Utils;
 using InControl.Internal;
 using InControl.NativeDeviceProfiles;
@@ -18,11 +17,14 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 using UnityStandardAssets.ImageEffects;
+
 using Bounds = HutongGames.PlayMaker.Actions.Bounds;
 using Logger = InControl.Logger;
 using Mask = ToJ.Mask;
 using Random = System.Random;
 using Touch = InControl.Touch;
+
+using HKMirror.Reflection.InstanceClasses;
 
 namespace HKMirror.Reflection;
 

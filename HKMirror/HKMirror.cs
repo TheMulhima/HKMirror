@@ -1,7 +1,7 @@
 ﻿namespace HKMirror;
 
 /// <summary>
-/// The mod class for the Modding API.
+///     The mod class for the Modding API.
 /// </summary>
 public sealed class HKMirrorMod : Mod
 {
@@ -22,7 +22,4 @@ public sealed class HKMirrorMod : Mod
     {
         Instance.LogError(log);
     }
-
 }
-
-    
