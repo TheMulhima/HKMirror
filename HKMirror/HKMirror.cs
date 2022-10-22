@@ -1,6 +1,4 @@
-﻿
-
-namespace HKMirror;
+﻿namespace HKMirror;
 
 /// <summary>
 /// The mod class for the Modding API.
@@ -8,10 +6,10 @@ namespace HKMirror;
 public sealed class HKMirrorMod : Mod
 {
     internal static HKMirrorMod Instance;
-    
+
     public override string GetVersion()
     {
-        return "v2.0.0.1";
+        return "v2.1.0.0";
     }
 
     public override void Initialize()
@@ -21,7 +19,10 @@ public sealed class HKMirrorMod : Mod
     }
 
     public static void DoLogError(object log)
-    { 
+    {
         Instance.LogError(log);
     }
+
 }
+
+    
