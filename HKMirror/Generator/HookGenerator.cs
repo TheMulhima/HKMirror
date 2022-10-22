@@ -20,7 +20,7 @@ internal class HookGenerator
     public HookGenerator(Type TargetType, string _className, string Dir, bool inModlog = true)
     {
         ClassName = _className;
-        if (!TargetType.IsPublic) return;
+        //if (!TargetType.IsPublic) return;
         if (TargetType.IsGenericType) return;
         StringBuilder OnHooks = new();
 
@@ -52,6 +52,7 @@ internal class HookGenerator
 
         var ontype = Type.GetType($"On.{ClassName}, MMHOOK_Assembly-CSharp");
         var iltype = Type.GetType($"IL.{ClassName}, MMHOOK_Assembly-CSharp");
+
         string[] OnMonoModEvents = Array.Empty<string>(), ILMonoModEvents = Array.Empty<string>();
         if (ontype != null)
         {
@@ -84,7 +85,7 @@ internal class HookGenerator
 
             foreach (var p in param)
             {
-                if (!p.ParameterType.IsPublic)
+                /*if (!p.ParameterType.IsPublic)
                 {
                     ToSkip = true;
                     reason = $"{p.ParameterType} {p.Name} isnt public";
@@ -101,7 +102,7 @@ internal class HookGenerator
                             break;
                         }
                     }
-                }
+                }*/
 
                 if (isOverload)
                 {
@@ -228,7 +229,6 @@ internal class HookGenerator
             {
                 output.Write(OnHooks);
             }
-            return;
             var ilHook = Dir + "/ILHooks";
             if (!Directory.Exists(ilHook))
             {

@@ -17,7 +17,7 @@ internal static class InstanceClassReflectedGenerator
     /// <param name="InModlog">decides where to output it to. if false, make sure to set output var in this class</param>
     public static void CreateForInstanceClass(Type TargetType, string ClassName, bool InModlog = true)
     {
-        if (!TargetType.IsPublic) return;
+        //if (!TargetType.IsPublic) return;
         string fullName = TargetType.ToString().Replace("+", ".");
         RGUtils.Output("namespace HKMirror.Reflection.InstanceClasses", InModlog, output);
         RGUtils.Output("{", InModlog, output);
@@ -147,7 +147,7 @@ internal static class InstanceClassReflectedGenerator
 
             foreach (var p in method.GetParameters())
             {
-                if (!p.ParameterType.IsPublic)
+                /*if (!p.ParameterType.IsPublic)
                 {
                     ToSkip = true;
                     reason = $"{p.ParameterType} {p.Name} isnt public";
@@ -164,7 +164,7 @@ internal static class InstanceClassReflectedGenerator
                             break;
                         }
                     }
-                }
+                }*/
             }
 
             if (ToSkip)
@@ -269,7 +269,7 @@ internal static class InstanceClassReflectedGenerator
         {
             try
             {
-                output = new StreamWriter(Path.Combine(Dir, $"{type.Name}.txt"));
+                output = new StreamWriter(Path.Combine(Dir, $"{type.Name}.cs"));
                 CreateForInstanceClass(type, type.Name, true);
                 output.Close();
             }

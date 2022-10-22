@@ -67,6 +67,311 @@ public static class Extensions
     {
         return new RandomR(instance);
     }
+    
+    /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of ObjectPool.StartupPool allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static ObjectPool_StartupPoolR Reflect(this ObjectPool.StartupPool instance)
+        {
+            return new ObjectPool_StartupPoolR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of ShineAnimSequence.ShineObject allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static ShineAnimSequence_ShineObjectR Reflect(this ShineAnimSequence.ShineObject instance)
+        {
+            return new ShineAnimSequence_ShineObjectR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of MusicCue.MusicChannelInfo allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static MusicCue_MusicChannelInfoR Reflect(this MusicCue.MusicChannelInfo instance)
+        {
+            return new MusicCue_MusicChannelInfoR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of PerformanceHUD.LoadReport allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static PerformanceHUD_LoadReportR Reflect(this PerformanceHUD.LoadReport instance)
+        {
+            return new PerformanceHUD_LoadReportR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of BossDoorCompletionStates.CompletionState allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static BossDoorCompletionStates_CompletionStateR Reflect(
+            this BossDoorCompletionStates.CompletionState instance)
+        {
+            return new BossDoorCompletionStates_CompletionStateR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of BossDoorTargetLock.BossDoorTarget allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static BossDoorTargetLock_BossDoorTargetR Reflect(this BossDoorTargetLock.BossDoorTarget instance)
+        {
+            return new BossDoorTargetLock_BossDoorTargetR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of BossScene.BossTest allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static BossScene_BossTestR Reflect(this BossScene.BossTest instance)
+        {
+            return new BossScene_BossTestR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of BossSequenceController.BossSequenceData allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static BossSequenceController_BossSequenceDataR Reflect(
+            this BossSequenceController.BossSequenceData instance)
+        {
+            return new BossSequenceController_BossSequenceDataR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of BossChallengeUI.ButtonDisplay allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static BossChallengeUI_ButtonDisplayR Reflect(this BossChallengeUI.ButtonDisplay instance)
+        {
+            return new BossChallengeUI_ButtonDisplayR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of BossDoorChallengeCompleteUI.BindingIcon allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static BossDoorChallengeCompleteUI_BindingIconR Reflect(
+            this BossDoorChallengeCompleteUI.BindingIcon instance)
+        {
+            return new BossDoorChallengeCompleteUI_BindingIconR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of GodfinderInvIcon.BossSceneExtra allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static GodfinderInvIcon_BossSceneExtraR Reflect(this GodfinderInvIcon.BossSceneExtra instance)
+        {
+            return new GodfinderInvIcon_BossSceneExtraR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of InputModuleBinder.MyActionSet allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static InputModuleBinder_MyActionSetR Reflect(this InputModuleBinder.MyActionSet instance)
+        {
+            return new InputModuleBinder_MyActionSetR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of PreMenuInputModuleActionAdaptor.PreMenuInputModuleActions allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static PreMenuInputModuleActionAdaptor_PreMenuInputModuleActionsR Reflect(
+            this PreMenuInputModuleActionAdaptor.PreMenuInputModuleActions instance)
+        {
+            return new PreMenuInputModuleActionAdaptor_PreMenuInputModuleActionsR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of WeaverlingEnemyList.GetEnemyTarget allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static WeaverlingEnemyList_GetEnemyTargetR Reflect(this WeaverlingEnemyList.GetEnemyTarget instance)
+        {
+            return new WeaverlingEnemyList_GetEnemyTargetR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of GameManager.SceneLoadInfo allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static GameManager_SceneLoadInfoR Reflect(this GameManager.SceneLoadInfo instance)
+        {
+            return new GameManager_SceneLoadInfoR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of AchievementIDMap.AchievementIDPair allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static AchievementIDMap_AchievementIDPairR Reflect(this AchievementIDMap.AchievementIDPair instance)
+        {
+            return new AchievementIDMap_AchievementIDPairR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of GamepadVibrationMixer.GamepadVibrationEmission allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static GamepadVibrationMixer_GamepadVibrationEmissionR Reflect(
+            this GamepadVibrationMixer.GamepadVibrationEmission instance)
+        {
+            return new GamepadVibrationMixer_GamepadVibrationEmissionR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of Probability.ProbabilityGameObject allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static Probability_ProbabilityGameObjectR Reflect(this Probability.ProbabilityGameObject instance)
+        {
+            return new Probability_ProbabilityGameObjectR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of Breakable.FlingObject allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static Breakable_FlingObjectR Reflect(this Breakable.FlingObject instance)
+        {
+            return new Breakable_FlingObjectR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of BreakableObject.Direction allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static BreakableObject_DirectionR Reflect(this BreakableObject.Direction instance)
+        {
+            return new BreakableObject_DirectionR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of BreakableObject.FlingObject allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static BreakableObject_FlingObjectR Reflect(this BreakableObject.FlingObject instance)
+        {
+            return new BreakableObject_FlingObjectR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of BreakableWithExternalDebris.WeightedExternalDebrisItem allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static BreakableWithExternalDebris_WeightedExternalDebrisItemR Reflect(
+            this BreakableWithExternalDebris.WeightedExternalDebrisItem instance)
+        {
+            return new BreakableWithExternalDebris_WeightedExternalDebrisItemR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of HealthCocoon.FlingPrefab allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static HealthCocoon_FlingPrefabR Reflect(this HealthCocoon.FlingPrefab instance)
+        {
+            return new HealthCocoon_FlingPrefabR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of ContentPackDetailsUI.ContentPackDetails allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static ContentPackDetailsUI_ContentPackDetailsR Reflect(
+            this ContentPackDetailsUI.ContentPackDetails instance)
+        {
+            return new ContentPackDetailsUI_ContentPackDetailsR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of MenuStyles.MenuStyle allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static MenuStyles_MenuStyleR Reflect(this MenuStyles.MenuStyle instance)
+        {
+            return new MenuStyles_MenuStyleR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of MenuStyles.MenuStyle.CameraCurves allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static MenuStyles_MenuStyle_CameraCurvesR Reflect(this MenuStyles.MenuStyle.CameraCurves instance)
+        {
+            return new MenuStyles_MenuStyle_CameraCurvesR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of FSMUtility.CheckFsmStateAction allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static FSMUtility_CheckFsmStateActionR Reflect(this FSMUtility.CheckFsmStateAction instance)
+        {
+            return new FSMUtility_CheckFsmStateActionR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of FSMUtility.GetIntFsmStateAction allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static FSMUtility_GetIntFsmStateActionR Reflect(this FSMUtility.GetIntFsmStateAction instance)
+        {
+            return new FSMUtility_GetIntFsmStateActionR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of ScenePreloader.SceneLoadOp allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static ScenePreloader_SceneLoadOpR Reflect(this ScenePreloader.SceneLoadOp instance)
+        {
+            return new ScenePreloader_SceneLoadOpR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of WorldInfo.SceneInfo allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static WorldInfo_SceneInfoR Reflect(this WorldInfo.SceneInfo instance)
+        {
+            return new WorldInfo_SceneInfoR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of WorldNavigation.SceneItem allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static WorldNavigation_SceneItemR Reflect(this WorldNavigation.SceneItem instance)
+        {
+            return new WorldNavigation_SceneItemR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of WorldNavigation.TransitionItem allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static WorldNavigation_TransitionItemR Reflect(this WorldNavigation.TransitionItem instance)
+        {
+            return new WorldNavigation_TransitionItemR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of tk2dTextGeomGen.GeomData allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static tk2dTextGeomGen_GeomDataR Reflect(this tk2dTextGeomGen.GeomData instance)
+        {
+            return new tk2dTextGeomGen_GeomDataR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of tk2dSpriteCollectionDefinition.ColliderData allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static tk2dSpriteCollectionDefinition_ColliderDataR Reflect(
+            this tk2dSpriteCollectionDefinition.ColliderData instance)
+        {
+            return new tk2dSpriteCollectionDefinition_ColliderDataR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of tk2dSpriteCollection.AttachPointTestSprite allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static tk2dSpriteCollection_AttachPointTestSpriteR Reflect(
+            this tk2dSpriteCollection.AttachPointTestSprite instance)
+        {
+            return new tk2dSpriteCollection_AttachPointTestSpriteR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of tk2dSpriteDefinition.AttachPoint allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static tk2dSpriteDefinition_AttachPointR Reflect(this tk2dSpriteDefinition.AttachPoint instance)
+        {
+            return new tk2dSpriteDefinition_AttachPointR (instance);
+        }
+
+        /// <summary>
+        ///     Returns an object that contains all (public and private) fields and methods of tk2dTileMap.TilemapPrefabInstance allowing you to easily get/set fields and call methods without dealing withR Reflection.
+        /// </summary>
+        public static tk2dTileMap_TilemapPrefabInstanceR Reflect(this tk2dTileMap.TilemapPrefabInstance instance)
+        {
+            return new tk2dTileMap_TilemapPrefabInstanceR (instance);
+        }
 
     /// <summary>
     ///     Returns an object that contains all (public and private) fields and methods of AccelerateVelocity allowing you to easily get/set fields and call methods without dealing with reflection.
