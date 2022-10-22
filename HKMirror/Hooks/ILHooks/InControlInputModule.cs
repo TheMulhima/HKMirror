@@ -1,291 +1,190 @@
 using MonoMod.RuntimeDetour.HookGen;
-
 namespace HKMirror.Hooks.ILHooks;
-
 /// <summary>
-///     Contains all correct IL Hooks for InControlInputModule.<br />
-///     Gives the correct GetStateMachineTarget version of IEnumerators ILs that run after every yeild return.<br />
-///     Includes ILHooks that aren't in the IL namespace such as API generated functions and property getters/setters.
+/// Contains all correct IL Hooks for InControlInputModule,
+/// Gives the correct GetStateMachineTarget version of IEnumerators ILs that run after every yeild return.<br />
+/// Includes ILHooks that aren't in the IL namespace such as API generated functions and property getters/setters.
 /// </summary>
 public static class ILInControlInputModule
 {
-    public static event ILContext.Manipulator get_SubmitAction
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_SubmitAction"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_SubmitAction"), value);
-    }
-
-    public static event ILContext.Manipulator set_SubmitAction
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "set_SubmitAction"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "set_SubmitAction"), value);
-    }
-
-    public static event ILContext.Manipulator get_CancelAction
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_CancelAction"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_CancelAction"), value);
-    }
-
-    public static event ILContext.Manipulator set_CancelAction
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "set_CancelAction"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "set_CancelAction"), value);
-    }
-
-    public static event ILContext.Manipulator get_MoveAction
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_MoveAction"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_MoveAction"), value);
-    }
-
-    public static event ILContext.Manipulator set_MoveAction
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "set_MoveAction"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "set_MoveAction"), value);
-    }
-
-    public static event ILContext.Manipulator UpdateModule
-    {
-        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "UpdateModule"),
-            value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "UpdateModule"), value);
-    }
-
-    public static event ILContext.Manipulator IsModuleSupported
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "IsModuleSupported"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "IsModuleSupported"), value);
-    }
-
-    public static event ILContext.Manipulator ShouldActivateModule
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ShouldActivateModule"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ShouldActivateModule"), value);
-    }
-
-    public static event ILContext.Manipulator ActivateModule
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ActivateModule"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ActivateModule"), value);
-    }
-
-    public static event ILContext.Manipulator Process
-    {
-        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "Process"),
-            value);
-        remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "Process"),
-            value);
-    }
-
-    public static event ILContext.Manipulator ProcessTouchEvents
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessTouchEvents"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessTouchEvents"), value);
-    }
-
-    public static event ILContext.Manipulator SendButtonEventToSelectedObject
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "SendButtonEventToSelectedObject"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "SendButtonEventToSelectedObject"), value);
-    }
-
-    public static event ILContext.Manipulator SendVectorEventToSelectedObject
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "SendVectorEventToSelectedObject"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "SendVectorEventToSelectedObject"), value);
-    }
-
-    public static event ILContext.Manipulator ProcessMove
-    {
-        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessMove"),
-            value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessMove"), value);
-    }
-
-    public static event ILContext.Manipulator Update
-    {
-        add =>
-            HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "Update"), value);
-        remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "Update"),
-            value);
-    }
-
-    public static event ILContext.Manipulator UpdateInputState
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "UpdateInputState"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "UpdateInputState"), value);
-    }
-
-    public static event ILContext.Manipulator set_Device
-    {
-        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "set_Device"),
-            value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "set_Device"), value);
-    }
-
-    public static event ILContext.Manipulator get_Device
-    {
-        add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_Device"),
-            value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_Device"), value);
-    }
-
-    public static event ILContext.Manipulator get_SubmitButton
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_SubmitButton"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_SubmitButton"), value);
-    }
-
-    public static event ILContext.Manipulator get_CancelButton
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_CancelButton"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_CancelButton"), value);
-    }
-
-    public static event ILContext.Manipulator SetVectorRepeatTimer
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "SetVectorRepeatTimer"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "SetVectorRepeatTimer"), value);
-    }
-
-    public static event ILContext.Manipulator get_VectorIsPressed
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_VectorIsPressed"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_VectorIsPressed"), value);
-    }
-
-    public static event ILContext.Manipulator get_VectorIsReleased
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_VectorIsReleased"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_VectorIsReleased"), value);
-    }
-
-    public static event ILContext.Manipulator get_VectorHasChanged
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_VectorHasChanged"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_VectorHasChanged"), value);
-    }
-
-    public static event ILContext.Manipulator get_VectorWasPressed
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_VectorWasPressed"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_VectorWasPressed"), value);
-    }
-
-    public static event ILContext.Manipulator get_SubmitWasPressed
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_SubmitWasPressed"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_SubmitWasPressed"), value);
-    }
-
-    public static event ILContext.Manipulator get_SubmitWasReleased
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_SubmitWasReleased"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_SubmitWasReleased"), value);
-    }
-
-    public static event ILContext.Manipulator get_CancelWasPressed
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_CancelWasPressed"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_CancelWasPressed"), value);
-    }
-
-    public static event ILContext.Manipulator get_MouseHasMoved
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_MouseHasMoved"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_MouseHasMoved"), value);
-    }
-
-    public static event ILContext.Manipulator get_MouseButtonWasPressed
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_MouseButtonWasPressed", false), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "get_MouseButtonWasPressed", false), value);
-    }
-
-    public static event ILContext.Manipulator SendUpdateEventToSelectedObject
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "SendUpdateEventToSelectedObject"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "SendUpdateEventToSelectedObject"), value);
-    }
-
-    public static event ILContext.Manipulator ProcessMouseEvent
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessMouseEvent"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessMouseEvent"), value);
-    }
-
-    public static event ILContext.Manipulator ProcessMouseEvent_int
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessMouseEvent"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessMouseEvent"), value);
-    }
-
-    public static event ILContext.Manipulator ProcessTouchPress
-    {
-        add => HookEndpointManager.Modify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessTouchPress"), value);
-        remove => HookEndpointManager.Unmodify(
-            ReflectionHelper.GetMethodInfo(typeof(InControlInputModule), "ProcessTouchPress"), value);
-    }
+public static event ILContext.Manipulator get_SubmitAction
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_SubmitAction", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_SubmitAction", true), value);
+}
+public static event ILContext.Manipulator set_SubmitAction
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "set_SubmitAction", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "set_SubmitAction", true), value);
+}
+public static event ILContext.Manipulator get_CancelAction
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_CancelAction", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_CancelAction", true), value);
+}
+public static event ILContext.Manipulator set_CancelAction
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "set_CancelAction", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "set_CancelAction", true), value);
+}
+public static event ILContext.Manipulator get_MoveAction
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_MoveAction", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_MoveAction", true), value);
+}
+public static event ILContext.Manipulator set_MoveAction
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "set_MoveAction", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "set_MoveAction", true), value);
+}
+public static event ILContext.Manipulator UpdateModule
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "UpdateModule", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "UpdateModule", true), value);
+}
+public static event ILContext.Manipulator IsModuleSupported
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "IsModuleSupported", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "IsModuleSupported", true), value);
+}
+public static event ILContext.Manipulator ShouldActivateModule
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ShouldActivateModule", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ShouldActivateModule", true), value);
+}
+public static event ILContext.Manipulator ActivateModule
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ActivateModule", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ActivateModule", true), value);
+}
+public static event ILContext.Manipulator Process
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "Process", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "Process", true), value);
+}
+public static event ILContext.Manipulator ProcessTouchEvents
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessTouchEvents", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessTouchEvents", true), value);
+}
+public static event ILContext.Manipulator SendButtonEventToSelectedObject
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "SendButtonEventToSelectedObject", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "SendButtonEventToSelectedObject", true), value);
+}
+public static event ILContext.Manipulator SendVectorEventToSelectedObject
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "SendVectorEventToSelectedObject", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "SendVectorEventToSelectedObject", true), value);
+}
+public static event ILContext.Manipulator ProcessMove
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessMove", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessMove", true), value);
+}
+public static event ILContext.Manipulator Update
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "Update", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "Update", true), value);
+}
+public static event ILContext.Manipulator UpdateInputState
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "UpdateInputState", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "UpdateInputState", true), value);
+}
+public static event ILContext.Manipulator set_Device
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "set_Device", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "set_Device", true), value);
+}
+public static event ILContext.Manipulator get_Device
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_Device", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_Device", true), value);
+}
+public static event ILContext.Manipulator get_SubmitButton
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_SubmitButton", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_SubmitButton", true), value);
+}
+public static event ILContext.Manipulator get_CancelButton
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_CancelButton", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_CancelButton", true), value);
+}
+public static event ILContext.Manipulator SetVectorRepeatTimer
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "SetVectorRepeatTimer", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "SetVectorRepeatTimer", true), value);
+}
+public static event ILContext.Manipulator get_VectorIsPressed
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_VectorIsPressed", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_VectorIsPressed", true), value);
+}
+public static event ILContext.Manipulator get_VectorIsReleased
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_VectorIsReleased", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_VectorIsReleased", true), value);
+}
+public static event ILContext.Manipulator get_VectorHasChanged
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_VectorHasChanged", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_VectorHasChanged", true), value);
+}
+public static event ILContext.Manipulator get_VectorWasPressed
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_VectorWasPressed", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_VectorWasPressed", true), value);
+}
+public static event ILContext.Manipulator get_SubmitWasPressed
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_SubmitWasPressed", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_SubmitWasPressed", true), value);
+}
+public static event ILContext.Manipulator get_SubmitWasReleased
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_SubmitWasReleased", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_SubmitWasReleased", true), value);
+}
+public static event ILContext.Manipulator get_CancelWasPressed
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_CancelWasPressed", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_CancelWasPressed", true), value);
+}
+public static event ILContext.Manipulator get_MouseHasMoved
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_MouseHasMoved", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_MouseHasMoved", true), value);
+}
+public static event ILContext.Manipulator get_MouseButtonWasPressed
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_MouseButtonWasPressed", false), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "get_MouseButtonWasPressed", false), value);
+}
+public static event ILContext.Manipulator SendUpdateEventToSelectedObject
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "SendUpdateEventToSelectedObject", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "SendUpdateEventToSelectedObject", true), value);
+}
+public static event ILContext.Manipulator ProcessMouseEvent
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessMouseEvent", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessMouseEvent", true), value);
+}
+public static event ILContext.Manipulator ProcessMouseEvent_int
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessMouseEvent", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessMouseEvent", true), value);
+}
+public static event ILContext.Manipulator ProcessMousePress
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessMousePress", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessMousePress", true), value);
+}
+public static event ILContext.Manipulator ProcessTouchPress
+{
+add => HookEndpointManager.Modify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessTouchPress", true), value);
+remove => HookEndpointManager.Unmodify(ReflectionHelper.GetMethodInfo(typeof(InControl.InControlInputModule), "ProcessTouchPress", true), value);
+}
 }
