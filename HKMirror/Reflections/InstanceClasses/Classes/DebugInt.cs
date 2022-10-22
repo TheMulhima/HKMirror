@@ -3,7 +3,8 @@ using LogLevel = HutongGames.PlayMaker.LogLevel;
 namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of DebugInt allowing you to easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of DebugInt allowing you to easily get/set fields
+///     and call methods without dealing with reflection.
 /// </summary>
 public class DebugIntR : InstanceClassWrapper<DebugInt>
 {

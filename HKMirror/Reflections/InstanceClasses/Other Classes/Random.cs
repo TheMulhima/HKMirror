@@ -1,70 +1,89 @@
-﻿namespace HKMirror.Reflection.InstanceClasses
+﻿using Random = System.Random;
+
+namespace HKMirror.Reflection.InstanceClasses;
+
+/// <summary>
+///     A class that contains all (public and private) fields and methods of System.Random allowing you to easily get/set fields and call methods without dealing with reflection.
+/// </summary>
+public class RandomR : InstanceClassWrapper<Random>
 {
-    /// <summary>
-    ///     A class that contains all (public and private) fields and methods of System.Random allowing you to easily get/set fields and call methods without dealing with reflection.
-    /// </summary>
-    public class RandomR:InstanceClassWrapper<System.Random>
+    public RandomR(Random _orig) : base(_orig)
     {
-        public RandomR(System.Random _orig) : base(_orig) {}
-        public int MBIG
-        {
-            get => GetFieldStatic<int>();
-            set => SetField(value);
-        }
+    }
 
-        public int MSEED
-        {
-            get => GetFieldStatic<int>();
-            set => SetField(value);
-        }
+    public int MBIG
+    {
+        get => GetFieldStatic<int>();
+        set => SetField(value);
+    }
 
-        public int MZ
-        {
-            get => GetFieldStatic<int>();
-            set => SetField(value);
-        }
+    public int MSEED
+    {
+        get => GetFieldStatic<int>();
+        set => SetField(value);
+    }
 
-        public int inext
-        {
-            get => GetField<int>();
-            set => SetField(value);
-        }
+    public int MZ
+    {
+        get => GetFieldStatic<int>();
+        set => SetField(value);
+    }
 
-        public int inextp
-        {
-            get => GetField<int>();
-            set => SetField(value);
-        }
+    public int inext
+    {
+        get => GetField<int>();
+        set => SetField(value);
+    }
 
-        public System.Int32[] SeedArray
-        {
-            get => GetField<System.Int32[]>();
-            set => SetField(value);
-        }
+    public int inextp
+    {
+        get => GetField<int>();
+        set => SetField(value);
+    }
 
-        public System.Double Sample () =>
-            CallMethod<System.Double>();
+    public int[] SeedArray
+    {
+        get => GetField<int[]>();
+        set => SetField(value);
+    }
 
-        public int InternalSample () =>
-            CallMethod<int>();
+    public double Sample()
+    {
+        return CallMethod<double>();
+    }
 
-        public int Next () =>
-            orig.Next();
+    public int InternalSample()
+    {
+        return CallMethod<int>();
+    }
 
-        public System.Double GetSampleForLargeRange () =>
-            CallMethod<System.Double>();
+    public int Next()
+    {
+        return orig.Next();
+    }
 
-        public int Next (int minValue, int maxValue) =>
-            orig.Next(minValue, maxValue);
+    public double GetSampleForLargeRange()
+    {
+        return CallMethod<double>();
+    }
 
-        public int Next (int maxValue) =>
-            orig.Next(maxValue);
+    public int Next(int minValue, int maxValue)
+    {
+        return orig.Next(minValue, maxValue);
+    }
 
-        public System.Double NextDouble () =>
-            orig.NextDouble();
+    public int Next(int maxValue)
+    {
+        return orig.Next(maxValue);
+    }
 
-        public void NextBytes (System.Byte[] buffer) =>
-            orig.NextBytes(buffer);
+    public double NextDouble()
+    {
+        return orig.NextDouble();
+    }
 
+    public void NextBytes(byte[] buffer)
+    {
+        orig.NextBytes(buffer);
     }
 }

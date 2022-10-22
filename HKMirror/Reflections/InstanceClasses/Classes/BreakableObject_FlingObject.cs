@@ -1,62 +1,64 @@
-namespace HKMirror.Reflection.InstanceClasses
-{
+namespace HKMirror.Reflection.InstanceClasses;
+
 /// <summary>
-///     A class that contains all (public and private) fields and methods of BreakableObject_FlingObject allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of BreakableObject_FlingObject allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
-public class BreakableObject_FlingObjectR:InstanceClassWrapper<BreakableObject.FlingObject>
+public class BreakableObject_FlingObjectR : InstanceClassWrapper<BreakableObject.FlingObject>
 {
-public BreakableObject_FlingObjectR(BreakableObject.FlingObject _orig) : base(_orig) {}
-public UnityEngine.GameObject referenceObject
-{
-get => orig.referenceObject;
-set => orig.referenceObject = value;
-}
+    public BreakableObject_FlingObjectR(BreakableObject.FlingObject _orig) : base(_orig)
+    {
+    }
 
-public int spawnMin
-{
-get => orig.spawnMin;
-set => orig.spawnMin = value;
-}
+    public GameObject referenceObject
+    {
+        get => orig.referenceObject;
+        set => orig.referenceObject = value;
+    }
 
-public int spawnMax
-{
-get => orig.spawnMax;
-set => orig.spawnMax = value;
-}
+    public int spawnMin
+    {
+        get => orig.spawnMin;
+        set => orig.spawnMin = value;
+    }
 
-public float speedMin
-{
-get => orig.speedMin;
-set => orig.speedMin = value;
-}
+    public int spawnMax
+    {
+        get => orig.spawnMax;
+        set => orig.spawnMax = value;
+    }
 
-public float speedMax
-{
-get => orig.speedMax;
-set => orig.speedMax = value;
-}
+    public float speedMin
+    {
+        get => orig.speedMin;
+        set => orig.speedMin = value;
+    }
 
-public float angleMin
-{
-get => orig.angleMin;
-set => orig.angleMin = value;
-}
+    public float speedMax
+    {
+        get => orig.speedMax;
+        set => orig.speedMax = value;
+    }
 
-public float angleMax
-{
-get => orig.angleMax;
-set => orig.angleMax = value;
-}
+    public float angleMin
+    {
+        get => orig.angleMin;
+        set => orig.angleMin = value;
+    }
 
-public UnityEngine.Vector2 originVariation
-{
-get => orig.originVariation;
-set => orig.originVariation = value;
-}
+    public float angleMax
+    {
+        get => orig.angleMax;
+        set => orig.angleMax = value;
+    }
 
-public void Fling (UnityEngine.Vector3 origin) =>
-orig.Fling(origin);
+    public Vector2 originVariation
+    {
+        get => orig.originVariation;
+        set => orig.originVariation = value;
+    }
 
-}
+    public void Fling(Vector3 origin)
+    {
+        orig.Fling(origin);
+    }
 }

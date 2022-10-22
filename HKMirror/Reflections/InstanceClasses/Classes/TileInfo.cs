@@ -3,7 +3,8 @@ using tk2dRuntime.TileMap;
 namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of TileInfo allowing you to easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of TileInfo allowing you to easily get/set fields
+///     and call methods without dealing with reflection.
 /// </summary>
 public class TileInfoR : InstanceClassWrapper<TileInfo>
 {

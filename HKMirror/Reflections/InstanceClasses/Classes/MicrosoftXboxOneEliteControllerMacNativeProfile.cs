@@ -4,7 +4,8 @@ namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
 ///     A class that contains all (public and private) fields and methods of
-///     MicrosoftXboxOneEliteControllerMacNativeProfile allowing you to easily get/set fields and call methods without dealing with reflection.
+///     MicrosoftXboxOneEliteControllerMacNativeProfile allowing you to easily get/set fields and call methods without
+///     dealing with reflection.
 /// </summary>
 public class
     MicrosoftXboxOneEliteControllerMacNativeProfileR : InstanceClassWrapper<

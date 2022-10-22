@@ -3,7 +3,8 @@ using TMPro;
 namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
-///     A class that contains all (public and private) fields and methods of Glyph2D allowing you to easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of Glyph2D allowing you to easily get/set fields
+///     and call methods without dealing with reflection.
 /// </summary>
 public class Glyph2DR : InstanceClassWrapper<Glyph2D>
 {

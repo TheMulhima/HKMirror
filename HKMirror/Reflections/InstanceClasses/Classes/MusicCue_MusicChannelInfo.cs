@@ -1,38 +1,29 @@
-namespace HKMirror.Reflection.InstanceClasses
-{
+namespace HKMirror.Reflection.InstanceClasses;
+
 /// <summary>
-///     A class that contains all (public and private) fields and methods of MusicCue_MusicChannelInfo allowing you to
-///     easily get/set fields and call methods without dealing with reflection.
+///     A class that contains all (public and private) fields and methods of MusicCue_MusicChannelInfo allowing you to easily get/set fields and call methods without dealing with reflection.
 /// </summary>
-public class MusicCue_MusicChannelInfoR:InstanceClassWrapper<MusicCue.MusicChannelInfo>
+public class MusicCue_MusicChannelInfoR : InstanceClassWrapper<MusicCue.MusicChannelInfo>
 {
-public MusicCue_MusicChannelInfoR(MusicCue.MusicChannelInfo _orig) : base(_orig) {}
-public UnityEngine.AudioClip clip
-{
-get => GetField<UnityEngine.AudioClip>();
-set => SetField(value);
-}
+    public MusicCue_MusicChannelInfoR(MusicCue.MusicChannelInfo _orig) : base(_orig)
+    {
+    }
 
-public MusicChannelSync sync
-{
-get => GetField<MusicChannelSync>();
-set => SetField(value);
-}
+    public AudioClip clip
+    {
+        get => GetField<AudioClip>();
+        set => SetField(value);
+    }
 
-public UnityEngine.AudioClip Clip
-{
-get => orig.Clip;
-}
+    public MusicChannelSync sync
+    {
+        get => GetField<MusicChannelSync>();
+        set => SetField(value);
+    }
 
-public bool IsEnabled
-{
-get => orig.IsEnabled;
-}
+    public AudioClip Clip => orig.Clip;
 
-public bool IsSyncRequired
-{
-get => orig.IsSyncRequired;
-}
+    public bool IsEnabled => orig.IsEnabled;
 
-}
+    public bool IsSyncRequired => orig.IsSyncRequired;
 }

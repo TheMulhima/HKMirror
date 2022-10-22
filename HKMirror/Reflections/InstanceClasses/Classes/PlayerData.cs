@@ -1,14 +1,15 @@
 ﻿namespace HKMirror.Reflection.InstanceClasses;
 
 /// <summary>
-///     A class that allows you to access PlayerData directly while also using PlayerData.Get/Set functions. Similar to <see cref="PlayerDataAccess">PlayerDataAccess</see> except that you have to provide an instance
+///     A class that allows you to access PlayerData directly while also using PlayerData.Get/Set functions. Similar to
+///     <see cref="PlayerDataAccess">PlayerDataAccess</see> except that you have to provide an instance
 /// </summary>
 public class PlayerDataR : InstanceClassWrapper<PlayerData>
 {
     public PlayerDataR(PlayerData orig) : base(orig)
     {
     }
-    
+
     public string version
     {
         get => orig.GetString(nameof(PlayerData.version));
@@ -9216,7 +9217,7 @@ public class PlayerDataR : InstanceClassWrapper<PlayerData>
 
     public void HasMapForScene(string sceneName)
     {
-        CallMethod(new object[] {sceneName});
+        CallMethod(new object[] { sceneName });
     }
 
     public void PrintStory()
@@ -9461,32 +9462,32 @@ public class PlayerDataR : InstanceClassWrapper<PlayerData>
 
     public void SetBoolSwappedArgs(bool value, string name)
     {
-        CallMethod(new object[] {value, name});
+        CallMethod(new object[] { value, name });
     }
 
     public void SetFloatSwappedArgs(float value, string name)
     {
-        CallMethod(new object[] {value, name});
+        CallMethod(new object[] { value, name });
     }
 
     public void SetIntSwappedArgs(int value, string name)
     {
-        CallMethod(new object[] {value, name});
+        CallMethod(new object[] { value, name });
     }
 
     public void SetStringSwappedArgs(string value, string name)
     {
-        CallMethod(new object[] {value, name});
+        CallMethod(new object[] { value, name });
     }
 
     public void SetVector3SwappedArgs(Vector3 value, string name)
     {
-        CallMethod(new object[] {value, name});
+        CallMethod(new object[] { value, name });
     }
 
     public void SetVariableSwappedArgs<T>(T value, string name)
     {
-        CallMethod(new object[] {value, name});
+        CallMethod(new object[] { value, name });
     }
 
     public void SetBoolInternal(string boolName, bool value)
@@ -9551,7 +9552,7 @@ public class PlayerDataR : InstanceClassWrapper<PlayerData>
 
     public void TakeHealthInternal(int amount)
     {
-        CallMethod(new object[] {amount});
+        CallMethod(new object[] { amount });
     }
 
     public void orig_UpdateBlueHealth()
