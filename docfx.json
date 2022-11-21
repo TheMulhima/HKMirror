@@ -8,8 +8,14 @@
           ],
           "src": "..",
           "exclude": [
-            "**/Hooks/**",
-            "**/Reflections/**"
+            "HKMirror/Hooks/ILHooks/*.cs",
+            "HKMirror/Hooks/OnHooks/*.cs",
+            "HKMirror/Reflections/InstanceClasses/Classes/*.cs",
+            "HKMirror/Reflections/InstanceClasses/OtherClasses/*.cs",
+			"HKMirror/Reflections/SingletonClasses/*.cs",
+			"HKMirror/Reflections/StaticClasses/*.cs",
+			"HKMirror/Reflections/Extensions.cs",
+			"HKMirror/Generator/*.cs",
           ]
         }
       ],
