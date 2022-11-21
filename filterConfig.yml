@@ -1,2 +1,3 @@
+apiRules:
 - exclude:
     type: Type
