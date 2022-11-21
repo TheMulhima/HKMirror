@@ -6,7 +6,11 @@
           "files": [
             "HKMirror/**.csproj"
           ],
-          "src": ".."
+          "src": "..",
+          "exclude": [
+            "**/Hooks/**",
+            "**/Reflections/**"
+          ]
         }
       ],
       "dest": "api",
