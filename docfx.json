@@ -6,7 +6,17 @@
           "files": [
             "HKMirror/**.csproj"
           ],
-          "src": ".."
+          "src": "..",
+          "exclude": [
+            "HKMirror/Hooks/ILHooks/*.cs",
+            "HKMirror/Hooks/OnHooks/*.cs",
+            "HKMirror/Reflections/InstanceClasses/Classes/*.cs",
+            "HKMirror/Reflections/InstanceClasses/OtherClasses/*.cs",
+			"HKMirror/Reflections/SingletonClasses/*.cs",
+			"HKMirror/Reflections/StaticClasses/*.cs",
+			"HKMirror/Reflections/Extensions.cs",
+			"HKMirror/Generator/*.cs",
+          ]
         }
       ],
       "dest": "api",
@@ -18,12 +28,6 @@
   "build": {
     "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ],
     "content": [
-	  {
-        "files": [
-          "api/**.yml",
-          "api/index.md"
-        ]
-      },
       {
         "files": [
           "articles/**.md",
