@@ -1,3 +1,25 @@
 apiRules:
+- include:
+    uidRegex: ^HKMirror$
+    type: Namespace
+- include:
+    uidRegex: ^HKMirror.Reflection.SingletonClasses$
+    type: Namespace
 - exclude:
-    type: Type
+    uidRegex: ^HKMirror.Reflection$
+    type: Namespace
+- exclude:
+    uidRegex: ^HKMirror.Reflection.InstanceClasses$
+    type: Namespace
+- exclude:
+    uidRegex: ^HKMirror.Reflection.StaticClasses$
+    type: Namespace
+- exclude:
+    uidRegex: ^HKMirror.Hooks.OnHooks$
+    type: Namespace
+- exclude:
+    uidRegex: ^HKMirror.Hooks.ILHooks$
+    type: Namespace
+- exclude:
+    uidRegex: ^HKMirror.Generator$
+    type: Namespace
