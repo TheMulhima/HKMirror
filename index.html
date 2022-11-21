@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Explanation of features: </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Explanation of features: ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>A core mod that makes it easier to access PlayerData, use reflection and use on/il hooks.</p>
+<h1 id="explanation-of-features">Explanation of features:</h1>
+<h2 id="playerdataaccess"><strong>PlayerDataAccess</strong></h2>
+<p>A class that allows you to access PlayerData as properties while also using best practices (i.e. going through PlayerData.Get/Set functions).</p>
+<pre><code class="lang-cs">//the normal way to set health
+PlayerData.instance.SetInt(nameof(PlayerData.health), PlayerData.instance.GetInt(nameof(PlayerData.health) - 1));
+
+//with HKMirror
+PlayerDataAccess.health -= 1
+</code></pre>
+<p>To use, add a <code>using HKMirror;</code> and get/set fields the same way you would do with <code>PlayerData.instance.</code> but instead use <code>PlayerDataAccess.</code></p>
+<h2 id="hkmirrorreflection"><strong>HKMirror.Reflection</strong></h2>
+<p>HKMirror does all the reflection for you, allowing you to call any private field/method in almost any class effortlessly.</p>
+<p>To use, add a <code>using HKMirror.Reflection;</code> and call the extension method <code>.Reflect()</code> on any instance of the class you want to have publicised access to.</p>
+<pre><code class="lang-cs">//easy way to access enemy type which is normally private
+gameObject.GetComponent&lt;HealthManager&gt;().Reflect().enemyType = 6;
+
+//set is gameplay scene to true which is normally private
+GameManager.instance.cameraCtrl.Reflect().isGameplayScene = true;
+</code></pre>
+<p>For convenience, common classes like HeroController and GameManager can be accessed as <code>HeroContollerR.DoAttack()</code> with a <code>using HKMirror.Reflection.SingletonClasses;</code></p>
+<h2 id="hkmirrorhooksonhooks"><strong>HKMirror.Hooks.OnHooks</strong></h2>
+<p>The On Hooks contain all on hooks that are available in the <code>On</code> namespace plus hooks for methods that aren't there such as API generated methods and property getter/setters.</p>
+<p>To use, add a <code>using HKMirror.Hooks.OnHooks</code> and find the class you want, in this example GameManager. The class in HKMirror will be called OnGameManager and there are 3 subclasses in it, BeforeOrig, AfterOrig, WithOrig.</p>
+<ul>
+<li>BeforeOrig are events which are invoked before orig(self) is called in an onhook. You can access the parameters through accessing the fields of the passed in <code>args</code>.</li>
+</ul>
+<pre><code class="lang-cs">OnGameManager.BeforeOrig.IncreaseGameTimer += args =&gt; //args has 2 fields, GameManager self and float timer (just like normal on hooks)
+  {
+     Log(args.timer); //this log statement will be run before orig(self) is called.
+  }
+</code></pre>
+<ul>
+<li>AfterOrig are events which are invoked after orig(self) is called in an onhook. You can access the parameters through accessing the fields of the passed in <code>args</code>.</li>
+</ul>
+<pre><code class="lang-cs">OnGameManager.AfterOrig.IncreaseGameTimer += args =&gt; 
+  {
+     Log(args.timer); //this log statement will be run after orig(self) is called.
+  }
+</code></pre>
+<ul>
+<li>On the other hand, WithOrig work like, and are structured like normal On Hooks</li>
+</ul>
+<pre><code class="lang-cs">OnGameManager.WithOrig.IncreaseGameTimer += (orig, self, timer) =&gt; 
+  {
+    Log(args.timer) //this log statement will be run before orig(self) is called.
+    orig(self); //run the original function
+    Log(args.timer); //this log statement will be run after orig(self) is called.
+  }
+</code></pre>
+<h2 id="hkmirrorhooksilhooks"><strong>HKMirror.Hooks.ILHooks</strong></h2>
+<p>The IL hooks contain all correct IL Hooks (i.e gives the GetStateMachineTarget version of IEnumerators ILs that run after every yeild return as opposed to regular IL Hooks) and includes ILHooks that aren't in the IL namespace such as API generated functions and property getters/setters.</p>
+<p>To use, add a <code>using HKMirror.Hooks.ILHooks</code> and find the class you want, in this example HeroContoller. The class in HKMirror will be called ILHeroController in which there are the il hooks you can hook onto.</p>
+<pre><code class="lang-cs">ILGameManager.IncreaseGameTimer += (il) =&gt; 
+  {
+    //the IL hook code
+  }
+</code></pre>
+<h2 id="explanation-of-namespaces">Explanation of namespaces:</h2>
+<ul>
+<li>HKMirror
+<ul>
+<li>PlayerDataAccess</li>
+<li>HKMirror.Reflection
+<ul>
+<li>HKMirror.Reflection.SingletonClasses - Contains publicised access to common singleton classes
+<ul>
+<li>HeroController, GameManager, UIManager, SceneData, InputHandler, GameCameras</li>
+</ul>
+</li>
+<li>HKMirror.Reflection.StaticClasses - Contains publicised access to static classes
+<ul>
+<li>e.g. BossSequenceController, Language, etc.</li>
+</ul>
+</li>
+<li>HKMirror.Reflection.InstanceClasses - Contains publicised access to instance classes
+<ul>
+<li>e.g. HealthManager, DamageHero, etc.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HKMirror.Hooks
+<ul>
+<li>HKMirror.Hooks.OnHooks - Contains the on hook events to hook onto</li>
+<li>HKMirror.Hooks.ILHooks - Contains the il hook events to hook onto</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/TheMulhima/HKMirror/blob/docfx/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
