@@ -15,6 +15,11 @@ public class GeoControlR : InstanceClassWrapper<GeoControl>
         set => orig.sizes = value;
     }
 
+    public GeoControl.Size size
+    {
+        get => GetField<int>();
+        set => SetField(Value);
+    }
     public int type
     {
         get => orig.type;
